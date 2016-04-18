@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Versus.Common.Base;
 
 namespace Versus.Common.Entities
@@ -6,7 +7,12 @@ namespace Versus.Common.Entities
     public class VsEntity : IVsEntity
     {
         public string Name { get; set; }
-        public int Id { get; set; }
+        public int Id { get; private set; }
+
+        public VsEntity()
+        {
+            Id = new Guid().GetHashCode();
+        }
 
         public string GetEntityName()
         {
@@ -17,6 +23,11 @@ namespace Versus.Common.Entities
         {
             // TODO: Go to server and get all users following this entity by ID
             throw new System.NotImplementedException();
+        }
+
+        public int GetId()
+        {
+            return Id;
         }
     }
 }
