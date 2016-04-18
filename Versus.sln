@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Versus.WPF", "Versus.WPF\Versus.WPF.csproj", "{050F544F-0933-47D8-AC32-FEAFB36673D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Versus.Server", "Versus.Server\Versus.Server.csproj", "{43F1D7D4-0625-4108-ACD2-9904C86DD8FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Versus.Common", "Versus.Common\Versus.Common.csproj", "{9536E719-A90F-4941-A9C0-8552DC6AE0F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{050F544F-0933-47D8-AC32-FEAFB36673D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{050F544F-0933-47D8-AC32-FEAFB36673D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{050F544F-0933-47D8-AC32-FEAFB36673D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{050F544F-0933-47D8-AC32-FEAFB36673D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F1D7D4-0625-4108-ACD2-9904C86DD8FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F1D7D4-0625-4108-ACD2-9904C86DD8FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F1D7D4-0625-4108-ACD2-9904C86DD8FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F1D7D4-0625-4108-ACD2-9904C86DD8FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9536E719-A90F-4941-A9C0-8552DC6AE0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9536E719-A90F-4941-A9C0-8552DC6AE0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9536E719-A90F-4941-A9C0-8552DC6AE0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9536E719-A90F-4941-A9C0-8552DC6AE0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
