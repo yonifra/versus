@@ -1,0 +1,3 @@
+﻿<Properties StartupItem="iOS/Versus.iOS.csproj" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.ItemProperties.Versus.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F8E30F8B-5C8C-4128-87C6-71D480D5F7A3" />
+</Properties>
