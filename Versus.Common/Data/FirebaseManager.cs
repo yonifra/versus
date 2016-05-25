@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using FireSharp;
 using FireSharp.Config;
@@ -73,10 +74,10 @@ namespace Versus.Common.Data
                 SmallIconUrl = @"http://path.to.icon"
             };
 
-            await _client.PushAsync(CategoriesName, cat);
-            await _client.PushAsync(EntitiesName, messi);
-            await _client.PushAsync(EntitiesName, ronaldo);
-            await _client.PushAsync(CompetitionsName, competition);
+            AddCategory(cat);
+            AddEntity(messi);
+            AddEntity(ronaldo);
+            AddCompetition(competition);
 
             UpdateVote("Lionel Messi", "Messi vs. Ronaldo");
             UpdateVote("Cristiano Ronaldo", "Messi vs. Ronaldo");
@@ -84,11 +85,18 @@ namespace Versus.Common.Data
 
         private async void SimulateData()
         {
-            await _client.DeleteAsync(CategoriesName);
-            await _client.DeleteAsync(CompetitionsName);
-            await _client.DeleteAsync(EntitiesName);
+            DeleteNode(CategoriesName);
+            DeleteNode(CompetitionsName);
+            DeleteNode(EntitiesName);
 
             AddInitialData();
+        }
+
+        public async Task<bool> DeleteNode(string nodeName)
+        {
+            var response = await _client.DeleteAsync(nodeName);
+
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
         public async void UpdateVote(string entity, string competition)
@@ -105,6 +113,27 @@ namespace Versus.Common.Data
                     break;
                 }
             }
+        }
+
+        public async Task<bool> AddCompetition(VsCompetition competition)
+        {
+            var response = await _client.PushAsync(CompetitionsName, competition);
+
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
+        public async Task<bool> AddEntity(VsEntity entity)
+        {
+            var response = await _client.PushAsync(EntitiesName, entity);
+
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
+        public async Task<bool> AddCategory(Category category)
+        {
+            var response = await _client.PushAsync(CategoriesName, category);
+
+            return response.StatusCode == HttpStatusCode.OK;
         }
 
         public async Task<Dictionary<string, VsCompetition>> GetAllCompetitions()
