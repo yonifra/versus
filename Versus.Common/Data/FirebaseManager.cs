@@ -34,7 +34,7 @@ namespace Versus.Common.Data
 
             _client = new FirebaseClient(config);
 
-           // SimulateData();
+            // SimulateData();
         }
 
         public async void AddInitialData()
@@ -74,10 +74,10 @@ namespace Versus.Common.Data
                 SmallIconUrl = @"http://path.to.icon"
             };
 
-            AddCategory(cat);
-            AddEntity(messi);
-            AddEntity(ronaldo);
-            AddCompetition(competition);
+            await AddCategory(cat);
+            await AddEntity(messi);
+            await AddEntity(ronaldo);
+            await AddCompetition(competition);
 
             UpdateVote("Lionel Messi", "Messi vs. Ronaldo");
             UpdateVote("Cristiano Ronaldo", "Messi vs. Ronaldo");
@@ -85,9 +85,9 @@ namespace Versus.Common.Data
 
         private async void SimulateData()
         {
-            DeleteNode(CategoriesName);
-            DeleteNode(CompetitionsName);
-            DeleteNode(EntitiesName);
+            await DeleteNode(CategoriesName);
+            await DeleteNode(CompetitionsName);
+            await DeleteNode(EntitiesName);
 
             AddInitialData();
         }
