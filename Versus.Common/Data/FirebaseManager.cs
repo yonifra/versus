@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using FireSharp;
@@ -33,63 +32,16 @@ namespace Versus.Common.Data
             };
 
             _client = new FirebaseClient(config);
-
-            // SimulateData();
         }
 
-        public async void AddInitialData()
-        {
-            var ronaldo = new VsEntity
-            {
-                Description = "Cristiano Ronaldo is also one of the best",
-                ImageUrl =
-                    @"http://www.speechonfashion.com/wp-content/uploads/2016/03/fotos-cristiano-ronaldo-2009-cabelo.jpg",
-                Name = "Cristiano Ronaldo",
-                Competition = "Messi vs. Ronaldo"
-            };
-
-            var competition = new VsCompetition
-            {
-                BackdropUrl = @"http://www.google.com",
-                Description = "This is a cool competition between two soccer legends",
-                EndingDate = DateTime.Now.AddDays(10),
-                StartedBy = "yonifra",
-                Category = "Soccer",
-                Name = "Messi vs. Ronaldo"
-            };
-
-            var messi = new VsEntity
-                            {
-                                Description = "Lionel Messi is considered one of the best in the world",
-                                ImageUrl = @"http://img.uefa.com/imgml/TP/players/1/2016/324x324/95803.jpg",
-                                Name = "Lionel Messi",
-                                Competition = "Messi vs. Ronaldo"
-                            };
-
-            var cat = new Category
-            {
-                BackdropUrl = @"http://www.google.com",
-                Description = "Best competitions from the soccer world",
-                Name = "Soccer",
-                SmallIconUrl = @"http://path.to.icon"
-            };
-
-            await AddCategory(cat);
-            await AddEntity(messi);
-            await AddEntity(ronaldo);
-            await AddCompetition(competition);
-
-            UpdateVote("Lionel Messi", "Messi vs. Ronaldo");
-            UpdateVote("Cristiano Ronaldo", "Messi vs. Ronaldo");
-        }
-
-        private async void SimulateData()
+        /// <summary>
+        /// Deletes ALL the data from the server. USE WITH CAUTION!
+        /// </summary>
+        private async void DeleteAllData()
         {
             await DeleteNode(CategoriesName);
             await DeleteNode(CompetitionsName);
             await DeleteNode(EntitiesName);
-
-            AddInitialData();
         }
 
         public async Task<bool> DeleteNode(string nodeName)
