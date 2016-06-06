@@ -1,4 +1,4 @@
-﻿namespace Versus.Common.Enums
+﻿namespace Versus.Portable.Enums
 {
     public enum EndingResult
     {

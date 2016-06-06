@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using FireSharp;
 using FireSharp.Config;
 using Newtonsoft.Json;
-using Versus.Common.Entities;
+using Versus.Portable.Entities;
 
-namespace Versus.Common.Data
+namespace Versus.Portable.Data
 {
     public class FirebaseManager
     {

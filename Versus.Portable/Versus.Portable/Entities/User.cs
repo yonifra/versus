@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Versus.Common.Entities
+namespace Versus.Portable.Entities
 {
     public class User
     {

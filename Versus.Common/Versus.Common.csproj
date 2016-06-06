@@ -70,13 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\FirebaseManager.cs" />
-    <Compile Include="Entities\Category.cs" />
-    <Compile Include="Entities\User.cs" />
-    <Compile Include="Entities\VsCompetition.cs" />
-    <Compile Include="Entities\VsEntity.cs" />
-    <Compile Include="Enums\EndingResult.cs" />
-    <Compile Include="Enums\VoteType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

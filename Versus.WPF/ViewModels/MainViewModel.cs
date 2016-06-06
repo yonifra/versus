@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Versus.Common.Data;
-using Versus.Common.Entities;
+using Versus.Portable.Data;
+using Versus.Portable.Entities;
 
 namespace Versus.WPF.ViewModels
 {

@@ -1,4 +1,4 @@
-﻿namespace Versus.Common.Entities
+﻿namespace Versus.Portable.Entities
 {
     public class VsEntity
     {

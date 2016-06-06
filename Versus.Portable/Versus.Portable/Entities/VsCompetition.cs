@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Versus.Common.Entities
+namespace Versus.Portable.Entities
 {
     public class VsCompetition
     {
