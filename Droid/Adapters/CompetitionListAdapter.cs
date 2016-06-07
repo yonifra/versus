@@ -52,6 +52,7 @@ namespace Versus.Droid.Adapters
 
             wrapper.Backdrop.SetBackgroundResource(Android.Resource.Color.Transparent);
             wrapper.Name.Text = competition.Name;
+            wrapper.Description.Text = competition.Description;
 
             // Load the image asynchonously
             Picasso.With(_context).Load(competition.BackdropUrl).Into(wrapper.Backdrop);

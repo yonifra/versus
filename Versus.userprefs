@@ -1,3 +1,12 @@
-﻿<Properties StartupItem="iOS/Versus.iOS.csproj" GitUserInfo="UsingGIT">
+﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/packages.config">
+    <Files>
+      <File FileName="Droid/packages.config" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.ItemProperties.Versus.Droid PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Versus.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F8E30F8B-5C8C-4128-87C6-71D480D5F7A3" />
 </Properties>
