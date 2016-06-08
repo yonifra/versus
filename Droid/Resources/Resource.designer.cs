@@ -44,14 +44,14 @@ namespace Versus.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f050000
+			public const int compBackdropImageView = 2131034112;
+			
 			// aapt resource value: 0x7f050002
-			public const int compBackdropImageView = 2131034114;
+			public const int compDescriptionTextView = 2131034114;
 			
 			// aapt resource value: 0x7f050001
-			public const int compDescriptionTextView = 2131034113;
-			
-			// aapt resource value: 0x7f050000
-			public const int compNameTextView = 2131034112;
+			public const int compNameTextView = 2131034113;
 			
 			// aapt resource value: 0x7f050003
 			public const int competitionsListView = 2131034115;
