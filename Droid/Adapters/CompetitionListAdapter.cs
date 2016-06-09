@@ -67,6 +67,8 @@ namespace Versus.Droid.Adapters
             return position;
         }
 
+        public List<VsCompetition> Competitions => _competitions.ToList();
+
         public override long GetItemId(int position)
         {
             return position;

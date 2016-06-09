@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using FireSharp;
@@ -93,6 +94,15 @@ namespace Versus.Portable.Data
             var response = await _client.GetAsync(CompetitionsName);
 
             return JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
+        }
+
+        public async Task<IEnumerable<VsCompetition>> GetCompetitions (string categoryName)
+        {
+            var response = await _client.GetAsync (CompetitionsName);
+
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
+
+            return dict.Values.Where (c => c.Name == categoryName);
         }
 
         public async Task<Dictionary<string, VsEntity>> GetAllEntities()
