@@ -102,7 +102,7 @@ namespace Versus.Portable.Data
 
             var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
 
-            return dict.Values.Where (c => c.Name == categoryName);
+            return dict.Values.Where (c => c.Name.ToLower() == categoryName.ToLower());
         }
 
         public async Task<Dictionary<string, VsEntity>> GetAllEntities()
