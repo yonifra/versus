@@ -11,16 +11,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <UniformGrid Rows="0" Columns="2">
-            <TextBlock Text="Name" />
+            <TextBlock Text="Name" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <TextBox Text="{Binding NewCategory.Name}" />
 
-            <TextBlock Text="Description" />
+            <TextBlock Text="Description" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <TextBox Text="{Binding NewCategory.Description}" />
 
-            <TextBlock Text="Small Icon URL" />
+            <TextBlock Text="Small Icon URL" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <TextBox Text="{Binding NewCategory.SmallIconUrl}" />
 
-            <TextBlock Text="Backdrop URL" />
+            <TextBlock Text="Backdrop URL" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <TextBox Text="{Binding NewCategory.BackdropUrl}" />
         </UniformGrid>
 

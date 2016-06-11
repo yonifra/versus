@@ -19,6 +19,8 @@ namespace Versus.WPF.ViewModels
         private RelayCommand _addEntity;
         private RelayCommand _addCategory;
         private RelayCommand _refreshCommand;
+        private Category _selectedCategory;
+        private VsCompetition _selectedCompetition;
 
         public MainViewModel()
         {
@@ -70,7 +72,7 @@ namespace Versus.WPF.ViewModels
                     ImageUrl = NewEntity.ImageUrl,
                     Description = NewEntity.Description,
                     Votes = NewEntity.Votes,
-                    Competition = NewEntity.Competition
+                    Competition = SelectedCompetition.Name
                 };
 
                 await FirebaseManager.Instance.AddEntity(entity);
@@ -88,7 +90,7 @@ namespace Versus.WPF.ViewModels
                 var competition = new VsCompetition
                 {
                     Name = NewCompetition.Name,
-                    Category = NewCompetition.Category,
+                    Category = SelectedCategory.Name,
                     Description = NewCompetition.Description,
                     BackdropUrl = NewCompetition.BackdropUrl,
                     EndingDate = NewCompetition.EndingDate,
@@ -100,6 +102,16 @@ namespace Versus.WPF.ViewModels
                 Competitions.Add(competition);
 
                 NewCompetition = new CompetitionViewModel();
+            }
+        }
+
+        public Category SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set
+            {
+                _selectedCategory = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -173,6 +185,16 @@ namespace Versus.WPF.ViewModels
             set
             {
                 _competitions = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public VsCompetition SelectedCompetition
+        {
+            get { return _selectedCompetition; }
+            set
+            {
+                _selectedCompetition = value;
                 RaisePropertyChanged();
             }
         }
