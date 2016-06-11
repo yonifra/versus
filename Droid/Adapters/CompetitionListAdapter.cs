@@ -8,17 +8,17 @@ using Versus.Portable.Entities;
 
 namespace Versus.Droid.Adapters
 {
-    internal class CompetitionAdapterWrapper : Java.Lang.Object
+    class CompetitionAdapterWrapper : Java.Lang.Object
     {
         public TextView Name { get; set; }
         public TextView Description { get; set; }
         public ImageView Backdrop { get; set; }
     }
 
-    internal class CompetitionListAdapter : BaseAdapter
+    class CompetitionListAdapter : BaseAdapter
     {
-        private readonly Activity _context;
-        private readonly IEnumerable<VsCompetition> _competitions;
+        readonly Activity _context;
+        readonly IEnumerable<VsCompetition> _competitions;
 
         public CompetitionListAdapter(Activity context, IEnumerable<VsCompetition> competitions)
         {

@@ -6,7 +6,7 @@ using Versus.Portable.Data;
 
 namespace Versus.Droid.Activities
 {
-    [Activity (Label = "Categories", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity (Label = "Versus", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         protected async override void OnCreate (Bundle savedInstanceState)
@@ -27,7 +27,7 @@ namespace Versus.Droid.Activities
 
                 if (lv != null) {
                     var category = (lv.Adapter as CategoriesListAdapter).Categories [index];
-                    Toast.MakeText (this, category.Name + " clicked", ToastLength.Short).Show ();
+                //    Toast.MakeText (this, category.Name + " clicked", ToastLength.Short).Show ();
 
                     // Put the name of the selected category into the intent
                     var competitionsActivity = new Intent (this, typeof (CompetitionsActivity));

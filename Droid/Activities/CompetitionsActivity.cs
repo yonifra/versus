@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Widget;
 using Versus.Droid.Adapters;
@@ -42,8 +43,14 @@ namespace Versus.Droid
 
                 if (lv != null) {
                     var competition = (lv.Adapter as CompetitionListAdapter).Competitions [index];
-                    Toast.MakeText (this, competition.Name + " clicked", ToastLength.Short).Show ();
-                    // TODO: Start an activity with the selected competition.
+                    //  Toast.MakeText (this, competition.Name + " clicked", ToastLength.Short).Show ();
+
+                    // Put the name of the selected category into the intent
+                    var competitionActivity = new Intent (this, typeof (CompetitionPageActivity));
+                    competitionActivity.PutExtra ("competitionName", competition.Name);
+
+                    // Start the competitions activity
+                    StartActivity (competitionActivity);
                 } else {
                     Toast.MakeText (this, "Item " + e.Position + " clicked", ToastLength.Short).Show ();
                 }

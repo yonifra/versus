@@ -1,23 +1,33 @@
 ﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="versus Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs">
     <Files>
-      <File FileName="Droid/packages.config" Line="1" Column="1" />
-      <File FileName="../../../Library/Frameworks/Xamarin.Android.framework/Versions/6.1.0-71/lib/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="1" Column="1" />
-      <File FileName="Droid/MainActivity.cs" Line="21" Column="97" />
-      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="34" Column="1" />
+      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="11" Column="5" />
+      <File FileName="Droid/Activities/MainActivity.cs" Line="15" Column="1" />
+      <File FileName="Droid/Activities/CompetitionsActivity.cs" Line="20" Column="53" />
+      <File FileName="Droid/app.config" Line="1" Column="1" />
+      <File FileName="Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
+      <File FileName="Droid/Adapters/CategoriesListAdapter.cs" Line="78" Column="2" />
+      <File FileName="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" Line="81" Column="13" />
       <File FileName="versus Status" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Versus" expanded="True" selected="True" />
+          <Node name="Versus" expanded="True">
+            <Node name="Versus.Droid" selected="True" />
+            <Node name="Versus.Portable" expanded="True">
+              <Node name="Data" expanded="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/yonifra/versus/Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" line="105" column="86" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -81,6 +81,7 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\CompetitionsActivity.cs" />
     <Compile Include="Adapters\CategoriesListAdapter.cs" />
+    <Compile Include="Activities\CompetitionPageActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
