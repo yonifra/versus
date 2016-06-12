@@ -103,6 +103,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\CompetitionListItemLayout.axml" />
     <AndroidResource Include="Resources\layout\Competitions.axml" />
+    <AndroidResource Include="Resources\layout\CompetitionPage.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

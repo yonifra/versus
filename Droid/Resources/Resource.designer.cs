@@ -44,8 +44,8 @@ namespace Versus.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int categoriesListView = 2131034116;
+			// aapt resource value: 0x7f050008
+			public const int categoriesListView = 2131034120;
 			
 			// aapt resource value: 0x7f050000
 			public const int compBackdropImageView = 2131034112;
@@ -56,8 +56,20 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f050001
 			public const int compNameTextView = 2131034113;
 			
+			// aapt resource value: 0x7f050007
+			public const int competitionsListView = 2131034119;
+			
 			// aapt resource value: 0x7f050003
-			public const int competitionsListView = 2131034115;
+			public const int entity1ImageView = 2131034115;
+			
+			// aapt resource value: 0x7f050004
+			public const int entity1Name = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int entity2ImageView = 2131034117;
+			
+			// aapt resource value: 0x7f050006
+			public const int entity2Name = 2131034118;
 			
 			static Id()
 			{
@@ -76,10 +88,13 @@ namespace Versus.Droid
 			public const int CompetitionListItemLayout = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Competitions = 2130903041;
+			public const int CompetitionPage = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Main = 2130903042;
+			public const int Competitions = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
 			
 			static Layout()
 			{
