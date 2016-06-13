@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -55,17 +56,65 @@ namespace Versus.Portable.Data
         public async void UpdateVote(string entity, string competition)
         {
             var entities = await GetAllEntities();
+            var competitions = await GetAllCompetitions ();
 
             foreach (var e in entities)
             {
-                if (e.Value.Name == entity && e.Value.Competition == competition)
+                if (e.Value.Name == entity)
                 {
-                    var newItem = e.Value;
-                    newItem.Votes++;
-                    await _client.UpdateAsync(EntitiesName + "/" + e.Key, newItem);
-                    break;
+                    // Entity is valid
+                    foreach (var c in competitions.Where(c => c.Value.Name == competition)) {
+                        
+                        if (c.Value.CompetitorName1 == entity){
+                            // TODO: Here you should validate if this user has logged in and if he's already
+                            // casted his vote
+                            c.Value.CompetitorScore1++;
+                            UpdateCompetition (c.Value, c.Key);
+                        } else if (c.Value.CompetitorName2 == entity) {
+                            c.Value.CompetitorScore2++;
+                            UpdateCompetition (c.Value, c.Key);
+                        }
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates the vote. Position 1 updates the left side, position 2 updates the right side
+        /// </summary>
+        /// <returns>The vote.</returns>
+        /// <param name="position">Position.</param>
+        /// <param name="competition">Competition.</param>
+        public async void UpdateVote (int position, string competition)
+        {
+            var competitions = await GetAllCompetitions ();
+
+                    // Entity is valid
+                    foreach (var c in competitions.Where (c => c.Value.Name == competition)) {
+
+                if (position==1) {
+                            // TODO: Here you should validate if this user has logged in and if he's already
+                            // casted his vote
+                            c.Value.CompetitorScore1++;
+                            UpdateCompetition (c.Value, c.Key);
+                } else if (position==2) {
+                            c.Value.CompetitorScore2++;
+                            UpdateCompetition (c.Value, c.Key);
+                        }
+                    }
+        }
+
+        private async void UpdateCompetition (VsCompetition value, string key)
+        {
+            if (string.IsNullOrEmpty (value.CompetitorName1)) {
+                value.CompetitorName1 = " ";
+            }
+
+            if (string.IsNullOrEmpty (value.CompetitorName2)) {
+                value.CompetitorName2 = " ";
+            }
+
+            await _client.UpdateAsync (CompetitionsName + "/" + key, value);
         }
 
         public async Task<bool> AddCompetition(VsCompetition competition)
@@ -126,6 +175,13 @@ namespace Versus.Portable.Data
             var response = await _client.GetAsync(CategoriesName);
 
             return JsonConvert.DeserializeObject<Dictionary<string, Category>>(response.Body);
+        }
+
+        public async Task<VsEntity> GetEntityByName (string name)
+        {
+            var dic = await GetAllEntities ();
+
+            return dic.Values.First (e => e.Name.ToLower () == name.ToLower ());
         }
     }
 }

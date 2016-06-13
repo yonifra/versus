@@ -10,5 +10,9 @@ namespace Versus.Portable.Entities
         public string Description { get; set; }
         public string Category { get; set; }
         public string Name { get; set; }
+        public string CompetitorName1 { get; set; }
+        public string CompetitorName2 { get; set; }
+        public int CompetitorScore1 { get; set; }
+        public int CompetitorScore2 { get; set; }
     }
 }
