@@ -32,10 +32,7 @@
                                             <Image Source="{Binding ImageUrl}" />
                                         </TextBlock.ToolTip>
                                 
-                                <Run Text="{Binding Name}" FontWeight="Bold" />
-                                <Run Text="("/>
-                                <Run Text="{Binding Votes}" />
-                                <Run Text=" votes)" />
+                                         <Run Text="{Binding Name}" FontWeight="Bold" />
                                     </TextBlock>
                                     <TextBlock Text="{Binding Description}" />
                                     <TextBlock>

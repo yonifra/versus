@@ -4,8 +4,7 @@ namespace Versus.WPF.ViewModels
 {
     public class EntityViewModel : ViewModelBase
     {
-        private string _competition;
-        private int _votes;
+        private string _wikiLink;
         private string _description;
         private string _imageUrl;
         private string _name;
@@ -40,22 +39,12 @@ namespace Versus.WPF.ViewModels
             }
         }
 
-        public int Votes
+        public string WikiLink
         {
-            get { return _votes; }
+            get { return _wikiLink; }
             set
             {
-                _votes = value;
-                RaisePropertyChanged();
-            }
-        }
-
-        public string Competition
-        {
-            get { return _competition; }
-            set
-            {
-                _competition = value;
+                _wikiLink = value;
                 RaisePropertyChanged();
             }
         }

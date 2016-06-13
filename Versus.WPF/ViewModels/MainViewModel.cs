@@ -21,6 +21,8 @@ namespace Versus.WPF.ViewModels
         private RelayCommand _refreshCommand;
         private Category _selectedCategory;
         private VsCompetition _selectedCompetition;
+        private VsEntity _entity1;
+        private VsEntity _entity2;
 
         public MainViewModel()
         {
@@ -71,8 +73,7 @@ namespace Versus.WPF.ViewModels
                     Name = NewEntity.Name,
                     ImageUrl = NewEntity.ImageUrl,
                     Description = NewEntity.Description,
-                    Votes = NewEntity.Votes,
-                    Competition = SelectedCompetition.Name
+                    WikiLink = NewEntity.WikiLink
                 };
 
                 await FirebaseManager.Instance.AddEntity(entity);
@@ -94,9 +95,13 @@ namespace Versus.WPF.ViewModels
                     Description = NewCompetition.Description,
                     BackdropUrl = NewCompetition.BackdropUrl,
                     EndingDate = NewCompetition.EndingDate,
+                    CompetitorName1 = Entity1.Name,
+                    CompetitorName2 = Entity2.Name,
+                    CompetitorScore1 = 0,
+                    CompetitorScore2 = 0,
                     StartedBy = NewCompetition.StartedBy
                 };
-                
+
                 await FirebaseManager.Instance.AddCompetition(competition);
 
                 Competitions.Add(competition);
@@ -111,6 +116,26 @@ namespace Versus.WPF.ViewModels
             set
             {
                 _selectedCategory = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public VsEntity Entity1
+        {
+            get { return _entity1; }
+            set
+            {
+                _entity1 = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public VsEntity Entity2
+        {
+            get { return _entity2; }
+            set
+            {
+                _entity2 = value;
                 RaisePropertyChanged();
             }
         }
@@ -159,7 +184,7 @@ namespace Versus.WPF.ViewModels
             if (_entities != null)
             {
                 _entities.Clear();
-                
+
                 var entities = await FirebaseManager.Instance.GetAllEntities();
 
                 foreach (var c in entities)
@@ -234,7 +259,7 @@ namespace Versus.WPF.ViewModels
             get { return _newEntity; }
             set
             {
-                _newEntity = value; 
+                _newEntity = value;
                 RaisePropertyChanged();
             }
         }

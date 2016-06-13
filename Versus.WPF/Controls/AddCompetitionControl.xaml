@@ -21,6 +21,24 @@
             <TextBlock Text="Backdrop URL" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <TextBox Text="{Binding NewCompetition.BackdropUrl}" />
 
+            <TextBlock Text="Entity 1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
+            <ComboBox ItemsSource="{Binding Entities}" SelectedItem="{Binding Entity1}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="entities:Category">
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <TextBlock Text="Entity 2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
+            <ComboBox ItemsSource="{Binding Entities}" SelectedItem="{Binding Entity2}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="entities:Category">
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
             <TextBlock Text="Category" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0" />
             <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory}">
                 <ComboBox.ItemTemplate>
