@@ -82,6 +82,7 @@
     <Compile Include="Activities\CompetitionsActivity.cs" />
     <Compile Include="Adapters\CategoriesListAdapter.cs" />
     <Compile Include="Activities\CompetitionPageActivity.cs" />
+    <Compile Include="Helpers\FontsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -89,7 +90,6 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
-    <None Include="Fonts\Slabo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -121,6 +121,11 @@
   <ItemGroup>
     <Folder Include="Activities\" />
     <Folder Include="Fonts\" />
+    <Folder Include="Assets\Fonts\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Fonts\Slabo.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

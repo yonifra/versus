@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Content.Res;
 using Android.Views;
 using Android.Widget;
 using Square.Picasso;
@@ -53,6 +54,8 @@ namespace Versus.Droid.Adapters
             wrapper.Backdrop.SetBackgroundResource(Android.Resource.Color.Transparent);
             wrapper.Name.Text = competition.Name;
             wrapper.Description.Text = competition.Description;
+
+            FontsHelper.ApplyTypeface (_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
 
             // Load the image asynchonously
             Picasso.With(_context).Load(competition.BackdropUrl).Into(wrapper.Backdrop);

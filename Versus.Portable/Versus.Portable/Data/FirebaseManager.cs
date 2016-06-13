@@ -55,27 +55,23 @@ namespace Versus.Portable.Data
         public async void UpdateVote(string entity, string competition)
         {
             var entities = await GetAllEntities();
-            var competitions = await GetAllCompetitions();
+            var competitions = await GetAllCompetitions ();
 
             foreach (var e in entities)
             {
                 if (e.Value.Name == entity)
                 {
                     // Entity is valid
-                    foreach (var c in competitions.Where(c => c.Value.Name == competition))
-                    {
-
-                        if (c.Value.CompetitorName1 == entity)
-                        {
+                    foreach (var c in competitions.Where(c => c.Value.Name == competition)) {
+                        
+                        if (c.Value.CompetitorName1 == entity){
                             // TODO: Here you should validate if this user has logged in and if he's already
                             // casted his vote
                             c.Value.CompetitorScore1++;
-                            UpdateCompetition(c.Value, c.Key);
-                        }
-                        else if (c.Value.CompetitorName2 == entity)
-                        {
+                            UpdateCompetition (c.Value, c.Key);
+                        } else if (c.Value.CompetitorName2 == entity) {
                             c.Value.CompetitorScore2++;
-                            UpdateCompetition(c.Value, c.Key);
+                            UpdateCompetition (c.Value, c.Key);
                         }
                     }
                 }
@@ -88,42 +84,36 @@ namespace Versus.Portable.Data
         /// <returns>The vote.</returns>
         /// <param name="position">Position.</param>
         /// <param name="competition">Competition.</param>
-        public async void UpdateVote(int position, string competition)
+        public async void UpdateVote (int position, string competition)
         {
-            var competitions = await GetAllCompetitions();
+            var competitions = await GetAllCompetitions ();
 
             // Entity is valid
-            foreach (var c in competitions.Where(c => c.Value.Name == competition))
-            {
-                switch (position)
-                {
-                    case 1:
-                        // TODO: Here you should validate if this user has logged in and if he's already
-                        // casted his vote
-                        c.Value.CompetitorScore1++;
-                        UpdateCompetition(c.Value, c.Key);
-                        break;
-                    case 2:
-                        c.Value.CompetitorScore2++;
-                        UpdateCompetition(c.Value, c.Key);
-                        break;
+            foreach (var c in competitions.Where (c => c.Value.Name == competition)) {
+
+            if (position==1) {
+                    // TODO: Here you should validate if this user has logged in and if he's already
+                    // casted his vote
+                    c.Value.CompetitorScore1++;
+                    UpdateCompetition (c.Value, c.Key);
+            } else if (position==2) {
+                    c.Value.CompetitorScore2++;
+                    UpdateCompetition (c.Value, c.Key);
                 }
             }
         }
 
-        private async void UpdateCompetition(VsCompetition value, string key)
+        private async void UpdateCompetition (VsCompetition value, string key)
         {
-            if (string.IsNullOrEmpty(value.CompetitorName1))
-            {
+            if (string.IsNullOrEmpty (value.CompetitorName1)) {
                 value.CompetitorName1 = " ";
             }
 
-            if (string.IsNullOrEmpty(value.CompetitorName2))
-            {
+            if (string.IsNullOrEmpty (value.CompetitorName2)) {
                 value.CompetitorName2 = " ";
             }
 
-            await _client.UpdateAsync(CompetitionsName + "/" + key, value);
+            await _client.UpdateAsync (CompetitionsName + "/" + key, value);
         }
 
         public async Task<bool> AddCompetition(VsCompetition competition)
@@ -154,22 +144,22 @@ namespace Versus.Portable.Data
             return JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
         }
 
-        public async Task<IEnumerable<VsCompetition>> GetCompetitions(string categoryName)
+        public async Task<IEnumerable<VsCompetition>> GetCompetitions (string categoryName)
         {
-            var response = await _client.GetAsync(CompetitionsName);
+            var response = await _client.GetAsync (CompetitionsName);
 
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
 
-            return dict.Values.Where(c => c.Category.ToLower() == categoryName.ToLower());
+            return dict.Values.Where (c => c.Category.ToLower() == categoryName.ToLower());
         }
 
-        public async Task<VsCompetition> GetCompetition(string competitionName)
+        public async Task<VsCompetition> GetCompetition (string competitionName)
         {
-            var response = await _client.GetAsync(CompetitionsName);
+            var response = await _client.GetAsync (CompetitionsName);
 
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
 
-            return dict.Values.FirstOrDefault(c => c.Name.ToLower() == competitionName.ToLower());
+            return dict.Values.FirstOrDefault (c => c.Name.ToLower () == competitionName.ToLower ());
         }
 
         public async Task<Dictionary<string, VsEntity>> GetAllEntities()
@@ -186,11 +176,11 @@ namespace Versus.Portable.Data
             return JsonConvert.DeserializeObject<Dictionary<string, Category>>(response.Body);
         }
 
-        public async Task<VsEntity> GetEntityByName(string name)
+        public async Task<VsEntity> GetEntityByName (string name)
         {
-            var dic = await GetAllEntities();
+            var dic = await GetAllEntities ();
 
-            return dic.Values.First(e => e.Name.ToLower() == name.ToLower());
+            return dic.Values.First (e => e.Name.ToLower () == name.ToLower ());
         }
     }
 }

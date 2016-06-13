@@ -53,6 +53,8 @@ namespace Versus.Droid
             wrapper.Name.Text = category.Name;
             wrapper.Description.Text = category.Description;
 
+            FontsHelper.ApplyTypeface (_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
+
             // Load the image asynchonously
             Picasso.With (_context).Load (category.BackdropUrl).Into (wrapper.Backdrop);
 
