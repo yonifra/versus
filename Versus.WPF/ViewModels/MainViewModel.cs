@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using FireSharp.Response;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Versus.Portable.Data;
@@ -23,6 +24,8 @@ namespace Versus.WPF.ViewModels
         private VsCompetition _selectedCompetition;
         private VsEntity _entity1;
         private VsEntity _entity2;
+        private string _consoleText;
+        private EventStreamResponse _response;
 
         public MainViewModel()
         {
@@ -35,6 +38,21 @@ namespace Versus.WPF.ViewModels
             NewCompetition = new CompetitionViewModel();
             NewEntity = new EntityViewModel();
             NewCategory = new CategoryViewModel();
+
+           // RegisterClientUpdates();
+        }
+
+        private async void RegisterClientUpdates()
+        {
+            _response = await FirebaseManager.Instance.Client.OnAsync("chat", (sender, args, context) =>
+            {
+                ConsoleText += args.Data + "\n";
+            });
+        }
+
+        private void UnregisterClientUpdates()
+        {
+            _response.Dispose();
         }
 
         private void RefreshAll()
@@ -290,6 +308,16 @@ namespace Versus.WPF.ViewModels
             set
             {
                 _addCompetition = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public string ConsoleText
+        {
+            get { return _consoleText; }
+            set
+            {
+                _consoleText = value;
                 RaisePropertyChanged();
             }
         }

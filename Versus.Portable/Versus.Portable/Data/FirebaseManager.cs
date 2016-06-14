@@ -35,6 +35,8 @@ namespace Versus.Portable.Data
             _client = new FirebaseClient(config);
         }
 
+        public FirebaseClient Client { get { return _client; } }
+
         /// <summary>
         /// Deletes ALL the data from the server. USE WITH CAUTION!
         /// </summary>

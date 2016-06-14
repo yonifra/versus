@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="120" />
         </Grid.RowDefinitions>
 
         <TabControl>
@@ -114,5 +115,6 @@
         </TabControl>
 
         <Button Grid.Row="1" Command="{Binding RefreshCommand}" Content="Refresh All Data" />
+        <TextBox Grid.Row="2" IsReadOnly="True" Text="{Binding ConsoleText, Mode=OneWay}" TextWrapping="Wrap" />
     </Grid>
 </Window>
