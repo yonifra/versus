@@ -116,6 +116,9 @@
     <AndroidResource Include="Resources\layout\CompetitionListItemLayout.axml" />
     <AndroidResource Include="Resources\layout\Competitions.axml" />
     <AndroidResource Include="Resources\layout\CompetitionPage.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\layout\toolbar.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -139,6 +142,7 @@
     <Folder Include="Fonts\" />
     <Folder Include="Assets\Fonts\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Resources\values-v21\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\Slabo.ttf" />

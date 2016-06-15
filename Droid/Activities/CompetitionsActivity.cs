@@ -1,17 +1,18 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid
 {
     [Activity (Label = "Active Competitions")]
-    public class CompetitionsActivity : Activity
+    public class CompetitionsActivity : ActionBarActivity
     {
         protected async override void OnCreate (Bundle savedInstanceState)
         {
@@ -31,6 +32,12 @@ namespace Versus.Droid
 
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Competitions);
+
+            var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
+
+            //  ActionBar.Title = competitionName;
+            SetSupportActionBar (toolbar);
+            SupportActionBar.Title = categoryName + " competitions";
 
             var competitionsListView = FindViewById<ListView> (Resource.Id.competitionsListView);
 

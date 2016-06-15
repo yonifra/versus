@@ -7,6 +7,9 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -16,12 +19,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/leftEntityButton" />
+                android:id="@+id/leftEntityButton"
+                android:scaleType="centerCrop" />
             <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:id="@+id/rightEntityButton" />
+                android:id="@+id/rightEntityButton"
+                android:scaleType="centerCrop" />
         </LinearLayout>
         <TextView
             android:layout_width="match_parent"

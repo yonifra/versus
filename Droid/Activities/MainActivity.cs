@@ -1,13 +1,15 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Support.V7.App;
 using Android.Widget;
 using Versus.Portable.Data;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid.Activities
 {
     [Activity (Label = "Versus", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : ActionBarActivity
     {
         protected async override void OnCreate (Bundle savedInstanceState)
         {
@@ -15,6 +17,12 @@ namespace Versus.Droid.Activities
 
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
+
+            var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
+
+            //  ActionBar.Title = competitionName;
+            SetSupportActionBar (toolbar);
+            SupportActionBar.Title = "Versus";
 
             var categoriesListView = FindViewById<ListView> (Resource.Id.categoriesListView);
             var categories = await FirebaseManager.Instance.GetAllCategories ();

@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.App;
 using Android.OS;
+using Android.Support.Design.Widget;
+using Android.Support.V7.App;
+using Android.Support.V7.Widget;
 using Android.Widget;
 using Square.Picasso;
 using Versus.Droid.Helpers;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid
 {
     [Activity (Label = "Competition Page")]
-    public class CompetitionPageActivity : Activity
+    public class CompetitionPageActivity : ActionBarActivity
     {
         private VsEntity _selectedEntity;
 
@@ -22,15 +26,22 @@ namespace Versus.Droid
 
             SetContentView (Resource.Layout.CompetitionPage);
 
+            var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
             var competitionName = Intent.GetStringExtra ("competitionName") ?? "";
+
+          //  ActionBar.Title = competitionName;
+            SetSupportActionBar (toolbar);
+            SupportActionBar.Title = competitionName;
+                            
             var competition = await FirebaseManager.Instance.GetCompetition (competitionName);
+            var parentView = (FrameLayout)FindViewById (Resource.Id.parentLayout);
 
             if (competition != null) {
                 var e1ImageButton = (ImageButton)FindViewById (Resource.Id.leftEntityButton);
                 var e2ImageButton = (ImageButton)FindViewById (Resource.Id.rightEntityButton);
-                var entityName = (TextView)FindViewById (Resource.Id.entityName);
-                var votingButton = (Button)FindViewById (Resource.Id.votingButton);
-                var entityDescription = (TextView)FindViewById (Resource.Id.entityDescription);
+                var entityName = (AppCompatTextView)FindViewById (Resource.Id.entityName);
+                var votingButton = (AppCompatButton)FindViewById (Resource.Id.votingButton);
+                var entityDescription = (AppCompatTextView)FindViewById (Resource.Id.entityDescription);
                 FontsHelper.ApplyTypeface (Assets, new List<TextView> { entityName, entityDescription });
 
                 var entities = await FirebaseManager.Instance.GetAllEntities ();
@@ -49,7 +60,10 @@ namespace Versus.Droid
                     votingButton.Click += (sender, args) => {
                         var index = _selectedEntity == entity1 ? 1 : 2;
                         FirebaseManager.Instance.UpdateVote (index, competitionName);
-                        Toast.MakeText (this, "Casted a vote for " + _selectedEntity.Name, ToastLength.Short).Show ();
+
+                        Snackbar.Make (parentView, "Casted a vote for " + _selectedEntity.Name, Snackbar.LengthLong).Show ();
+                                
+                        //Toast.MakeText (this, "Casted a vote for " + _selectedEntity.Name, ToastLength.Short).Show ();
                     };
                 }
 
@@ -65,7 +79,7 @@ namespace Versus.Droid
             }
         }
 
-        private void UpdateUiForSelectedEntity (TextView entityName, TextView entityDescription, Button votingButton)
+        private void UpdateUiForSelectedEntity (AppCompatTextView entityName, AppCompatTextView entityDescription, AppCompatButton votingButton)
         {
             entityName.Text = _selectedEntity.Name;
             entityDescription.Text = _selectedEntity.Description;

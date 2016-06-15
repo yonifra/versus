@@ -22,12 +22,14 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:id="@+id/compNameTextView"
             android:textSize="24dp" />
         <TextView
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_width="match_parent"
+            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
             android:id="@+id/compDescriptionTextView" />
     </LinearLayout>
