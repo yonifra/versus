@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Android.App;
-using Android.Content.Res;
 using Android.Views;
 using Android.Widget;
 using Square.Picasso;
+using Versus.Droid.Helpers;
 using Versus.Portable.Entities;
 
 namespace Versus.Droid.Adapters
@@ -18,8 +18,8 @@ namespace Versus.Droid.Adapters
 
     class CompetitionListAdapter : BaseAdapter
     {
-        readonly Activity _context;
-        readonly IEnumerable<VsCompetition> _competitions;
+        private readonly Activity _context;
+        private readonly IEnumerable<VsCompetition> _competitions;
 
         public CompetitionListAdapter(Activity context, IEnumerable<VsCompetition> competitions)
         {
@@ -55,7 +55,7 @@ namespace Versus.Droid.Adapters
             wrapper.Name.Text = competition.Name;
             wrapper.Description.Text = competition.Description;
 
-            FontsHelper.ApplyTypeface (_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
+            FontsHelper.ApplyTypeface(_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
 
             // Load the image asynchonously
             Picasso.With(_context).Load(competition.BackdropUrl).Into(wrapper.Backdrop);

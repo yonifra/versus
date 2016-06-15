@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.Content.Res;
 using Android.Graphics;
 using Android.Widget;
 
-namespace Versus.Droid
+namespace Versus.Droid.Helpers
 {
     public static class FontsHelper
     {
