@@ -121,6 +121,8 @@
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\layout\drawer_header.axml" />
     <AndroidResource Include="Resources\menu\drawer.axml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\nav_header_background.jpg" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -146,6 +148,7 @@
     <Folder Include="Helpers\" />
     <Folder Include="Resources\values-v21\" />
     <Folder Include="Resources\menu\" />
+    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\Slabo.ttf" />
