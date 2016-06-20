@@ -50,7 +50,7 @@
                 android:id="@+id/entityDescription" />
         </ScrollView>
     </LinearLayout>
-    <android.support.v4.widget.FloatingActionButton
+    <Button
         android:id="@+id/votingButton"
         android:layout_width="match_parent"
         android:text="VOTE"
