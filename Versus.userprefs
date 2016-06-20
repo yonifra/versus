@@ -1,22 +1,39 @@
 ﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="11" Column="5" />
-      <File FileName="Droid/Activities/MainActivity.cs" Line="15" Column="1" />
-      <File FileName="Droid/Activities/CompetitionsActivity.cs" Line="20" Column="53" />
-      <File FileName="Droid/app.config" Line="1" Column="1" />
-      <File FileName="Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="Droid/Adapters/CategoriesListAdapter.cs" Line="78" Column="2" />
-      <File FileName="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" Line="81" Column="13" />
+      <File FileName="Droid/Activities/CompetitionPageActivity.cs" Line="14" Column="1" />
+      <File FileName="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" Line="1" Column="1" />
+      <File FileName="Droid/Activities/CompetitionsActivity.cs" Line="10" Column="1" />
+      <File FileName="Versus.Portable/Versus.Portable/Entities/VsEntity.cs" Line="8" Column="45" />
       <File FileName="versus Status" />
+      <File FileName="Entities Status" />
+      <File FileName="Droid/Helpers/FontsHelper.cs" Line="7" Column="31" />
+      <File FileName="Droid/Assets/AboutAssets.txt" Line="1" Column="1" />
+      <File FileName="Droid/Activities/MainActivity.cs" Line="7" Column="51" />
+      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="57" Column="1" />
+      <File FileName="Droid/Adapters/CategoriesListAdapter.cs" Line="54" Column="61" />
+      <File FileName="Droid/Properties/AndroidManifest.xml" Line="4" Column="67" />
+      <File FileName="../../../Library/Frameworks/Xamarin.Android.framework/Versions/6.1.0-71/lib/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="74" Column="91" />
+      <File FileName="Droid/Resources/values/styles.xml" Line="6" Column="1" />
+      <File FileName="Droid/Resources/values-v21/styles.xml" Line="10" Column="11" />
+      <File FileName="Droid/Resources/menu/drawer.axml" Line="8" Column="52" />
+      <File FileName="Droid Status" />
+      <File FileName="Droid/Resources/values/colors.xml" Line="7" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Versus" expanded="True">
-            <Node name="Versus.Droid" selected="True" />
-            <Node name="Versus.Portable" expanded="True">
-              <Node name="Data" expanded="True" />
+            <Node name="Versus.Droid" expanded="True">
+              <Node name="Activities" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="layout" expanded="True">
+                  <Node name="drawer_header.axml" selected="True" />
+                </Node>
+                <Node name="menu" expanded="True" />
+                <Node name="values" expanded="True" />
+                <Node name="values-v21" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -25,11 +42,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/yonifra/versus/Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" line="105" column="86" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
+  <MonoDevelop.Ide.ItemProperties.Versus.Droid PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Versus.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F8E30F8B-5C8C-4128-87C6-71D480D5F7A3" />
 </Properties>
