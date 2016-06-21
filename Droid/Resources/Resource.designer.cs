@@ -1999,8 +1999,17 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0a002d
 			public const int multiply = 2131361837;
 			
-			// aapt resource value: 0x7f0a008e
-			public const int nav_about = 2131361934;
+			// aapt resource value: 0x7f0a0096
+			public const int nav_about = 2131361942;
+			
+			// aapt resource value: 0x7f0a0091
+			public const int nav_crossAppGroup = 2131361937;
+			
+			// aapt resource value: 0x7f0a008f
+			public const int nav_favCompetitions = 2131361935;
+			
+			// aapt resource value: 0x7f0a0090
+			public const int nav_favs = 2131361936;
 			
 			// aapt resource value: 0x7f0a008c
 			public const int nav_friends = 2131361932;
@@ -2008,8 +2017,23 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0a008b
 			public const int nav_home = 2131361931;
 			
+			// aapt resource value: 0x7f0a0093
+			public const int nav_logoutLogin = 2131361939;
+			
+			// aapt resource value: 0x7f0a0094
+			public const int nav_moreStuffGroup = 2131361940;
+			
 			// aapt resource value: 0x7f0a008d
-			public const int nav_profile = 2131361933;
+			public const int nav_personalizedGroup = 2131361933;
+			
+			// aapt resource value: 0x7f0a008e
+			public const int nav_profile = 2131361934;
+			
+			// aapt resource value: 0x7f0a0092
+			public const int nav_search = 2131361938;
+			
+			// aapt resource value: 0x7f0a0095
+			public const int nav_settings = 2131361941;
 			
 			// aapt resource value: 0x7f0a007d
 			public const int nav_view = 2131361917;
