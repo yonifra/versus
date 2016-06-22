@@ -12,8 +12,9 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar" />
-        <ListView
-            android:id="@+id/categoriesListView"
+    <!-- This frame layout will hold the currently active fragment -->
+        <FrameLayout
+            android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

@@ -16,15 +16,21 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace Versus.Droid
 {
     [Activity (Label = "Competition Page")]
-    public class CompetitionPageActivity : ActionBarActivity
+    public class CompetitionPageActivity : BaseActivity
     {
         private VsEntity _selectedEntity;
+
+        protected override int LayoutResource {
+            get {
+                return Resource.Layout.fragment_competitionDetails;
+            }
+        }
 
         protected override async void OnCreate (Bundle savedInstanceState)
         {
             base.OnCreate (savedInstanceState);
 
-            SetContentView (Resource.Layout.CompetitionPage);
+            SetContentView (Resource.Layout.fragment_competitionDetails);
 
             var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
             var competitionName = Intent.GetStringExtra ("competitionName") ?? "";
