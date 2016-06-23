@@ -4,55 +4,67 @@ using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using Versus.Droid.Activities;
+using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
 
-namespace Versus.Droid
+namespace Versus.Droid.Fragments
 {
     public class CategoriesFragment : Android.Support.V4.App.Fragment
     {
-        Dictionary<string, Category> _categories;
+        private Dictionary<string, Category> _categories;
 
-        public CategoriesFragment ()
+        public CategoriesFragment()
         {
             RetainInstance = true;
         }
 
-        public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
-            base.OnCreateView (inflater, container, savedInstanceState);
+            base.OnCreateView(inflater, container, savedInstanceState);
 
-            var view = inflater.Inflate (Resource.Layout.fragment_categories, null);
+            var view = inflater.Inflate(Resource.Layout.fragment_categories, container, false);
 
-            var categoriesListView = view.FindViewById<ListView> (Resource.Id.categoriesListView);
+            var categoriesListView = view.FindViewById<ListView>(Resource.Id.categoriesListView);
 
-            if (_categories == null) {
-                GetAllCategoriesAsync ();
+            if (_categories == null)
+            {
+                GetAllCategoriesAsync();
             }
 
-            categoriesListView.Adapter = new CategoriesListAdapter (Activity, _categories.Values);
+            categoriesListView.Adapter = new CategoriesListAdapter(Activity, _categories.Values);
 
-            categoriesListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
+            categoriesListView.ItemClick += (sender, e) =>
+            {
                 var index = e.Position;
 
                 var lv = (sender as ListView);
 
-                if (lv != null) {
-                    var category = (lv.Adapter as CategoriesListAdapter).Categories [index];
+                if (lv != null)
+                {
+                    var categoriesListAdapter = lv.Adapter as CategoriesListAdapter;
 
-                    // Put the name of the selected category into the intent
-                    var competitionsActivity = new Intent (Activity, typeof (CompetitionsActivity));
-                    competitionsActivity.PutExtra ("categoryName", category.Name);
+                    if (categoriesListAdapter != null)
+                    {
+                        var category = categoriesListAdapter.Categories[index];
 
-                    // Start the competitions activity
-                    StartActivity (competitionsActivity);
-                } else {
+                        // Put the name of the selected category into the intent
+                        var competitionsActivity = new Intent(Activity, typeof(CompetitionsActivity));
+                        competitionsActivity.PutExtra("categoryName", category.Name);
+
+                        // Start the competitions activity
+                        StartActivity(competitionsActivity);
+                    }
+                }
+                else
+                {
 
 #if DEBUG
-                    Snackbar.Make (view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
+                    Snackbar.Make(view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show();
 #endif
                 }
             };
@@ -60,9 +72,9 @@ namespace Versus.Droid
             return view;
         }
 
-        private async void GetAllCategoriesAsync ()
+        private async void GetAllCategoriesAsync()
         {
-            _categories = await FirebaseManager.Instance.GetAllCategories ();
+            _categories = await FirebaseManager.Instance.GetAllCategories();
         }
     }
 }

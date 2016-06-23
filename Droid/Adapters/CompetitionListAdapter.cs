@@ -9,14 +9,14 @@ using Versus.Portable.Entities;
 
 namespace Versus.Droid.Adapters
 {
-    class CompetitionAdapterWrapper : Java.Lang.Object
+    internal class CompetitionAdapterWrapper : Java.Lang.Object
     {
         public TextView Name { get; set; }
         public TextView Description { get; set; }
         public ImageView Backdrop { get; set; }
     }
 
-    class CompetitionListAdapter : BaseAdapter
+    internal class CompetitionListAdapter : BaseAdapter
     {
         private readonly Activity _context;
         private readonly IEnumerable<VsCompetition> _competitions;

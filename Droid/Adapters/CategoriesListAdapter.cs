@@ -7,7 +7,7 @@ using Square.Picasso;
 using Versus.Droid.Helpers;
 using Versus.Portable.Entities;
 
-namespace Versus.Droid
+namespace Versus.Droid.Adapters
 {
     internal class CategoryAdapterWrapper : Java.Lang.Object
     {

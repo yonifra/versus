@@ -1,8 +1,6 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Widget;
-using Versus.Portable.Data;
+using Versus.Droid.Fragments;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid.Activities
@@ -10,11 +8,7 @@ namespace Versus.Droid.Activities
     [Activity (Label = "Versus", LaunchMode = Android.Content.PM.LaunchMode.SingleTop, MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : BaseActivity
     {
-        protected override int LayoutResource {
-            get {
-                return Resource.Layout.Main;
-            }
-        }
+        protected override int LayoutResource => Resource.Layout.Main;
 
         protected override void OnCreate (Bundle bundle)
         {
@@ -42,8 +36,6 @@ namespace Versus.Droid.Activities
                 break;
             case 2:
      //           fragment = new SearchFragment ();
-                break;
-            default:
                 break;
             }
 
