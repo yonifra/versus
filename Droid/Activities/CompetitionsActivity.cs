@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -12,8 +13,14 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace Versus.Droid
 {
     [Activity (Label = "Active Competitions")]
-    public class CompetitionsActivity : ActionBarActivity
+    public class CompetitionsActivity : BaseActivity
     {
+        protected override int LayoutResource {
+            get {
+                return Resource.Layout.fragment_competitions;
+            }
+        }
+
         protected async override void OnCreate (Bundle savedInstanceState)
         {
             base.OnCreate (savedInstanceState);
@@ -31,7 +38,7 @@ namespace Versus.Droid
             }
 
             // Set our view from the "main" layout resource
-            SetContentView (Resource.Layout.Competitions);
+            SetContentView (Resource.Layout.fragment_competitions);
 
             var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
 

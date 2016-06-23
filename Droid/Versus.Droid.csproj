@@ -95,6 +95,8 @@
     <Compile Include="Adapters\CategoriesListAdapter.cs" />
     <Compile Include="Activities\CompetitionPageActivity.cs" />
     <Compile Include="Helpers\FontsHelper.cs" />
+    <Compile Include="Activities\BaseActivity.cs" />
+    <Compile Include="Fragments\CategoriesFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -114,13 +116,16 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\CompetitionListItemLayout.axml" />
-    <AndroidResource Include="Resources\layout\Competitions.axml" />
-    <AndroidResource Include="Resources\layout\CompetitionPage.axml" />
+    <AndroidResource Include="Resources\layout\fragment_competitions.axml" />
+    <AndroidResource Include="Resources\layout\fragment_competitionDetails.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values-v21\styles.xml" />
     <AndroidResource Include="Resources\layout\toolbar.axml" />
     <AndroidResource Include="Resources\layout\drawer_header.axml" />
     <AndroidResource Include="Resources\menu\drawer.axml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\nav_header_background.jpg" />
+    <AndroidResource Include="Resources\layout\fragment_categories.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -146,6 +151,8 @@
     <Folder Include="Helpers\" />
     <Folder Include="Resources\values-v21\" />
     <Folder Include="Resources\menu\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Fragments\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\Slabo.ttf" />

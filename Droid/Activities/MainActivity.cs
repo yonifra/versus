@@ -1,19 +1,24 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.OS;
-using Android.Support.V7.App;
 using Android.Widget;
 using Versus.Portable.Data;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid.Activities
 {
-    [Activity (Label = "Versus", MainLauncher = true, Icon = "@mipmap/icon")]
-    public class MainActivity : ActionBarActivity
+    [Activity (Label = "Versus", LaunchMode = Android.Content.PM.LaunchMode.SingleTop, MainLauncher = true, Icon = "@mipmap/icon")]
+    public class MainActivity : BaseActivity
     {
-        protected async override void OnCreate (Bundle savedInstanceState)
+        protected override int LayoutResource {
+            get {
+                return Resource.Layout.Main;
+            }
+        }
+
+        protected override void OnCreate (Bundle bundle)
         {
-            base.OnCreate (savedInstanceState);
+            base.OnCreate (bundle);
 
             // Set our view from the "main" layout resource
             SetContentView (Resource.Layout.Main);
@@ -23,30 +28,28 @@ namespace Versus.Droid.Activities
             //  ActionBar.Title = competitionName;
             SetSupportActionBar (toolbar);
             SupportActionBar.Title = "Versus";
+        }
 
-            var categoriesListView = FindViewById<ListView> (Resource.Id.categoriesListView);
-            var categories = await FirebaseManager.Instance.GetAllCategories ();
-            categoriesListView.Adapter = new CategoriesListAdapter (this, categories.Values);
+        private void ListItemClicked (int position)
+        {
+            Android.Support.V4.App.Fragment fragment = null;
+            switch (position) {
+            case 0:
+                fragment = new CategoriesFragment ();
+                break;
+            case 1:
+          //      fragment = new ByCategoryFragment ();
+                break;
+            case 2:
+     //           fragment = new SearchFragment ();
+                break;
+            default:
+                break;
+            }
 
-            categoriesListView.ItemClick += (object sender, AdapterView.ItemClickEventArgs e) => {
-                var index = e.Position;
-
-                var lv = (sender as ListView);
-
-                if (lv != null) {
-                    var category = (lv.Adapter as CategoriesListAdapter).Categories [index];
-                //    Toast.MakeText (this, category.Name + " clicked", ToastLength.Short).Show ();
-
-                    // Put the name of the selected category into the intent
-                    var competitionsActivity = new Intent (this, typeof (CompetitionsActivity));
-                    competitionsActivity.PutExtra ("categoryName", category.Name);
-
-                    // Start the competitions activity
-                    StartActivity (competitionsActivity);
-                } else {
-                    Toast.MakeText (this, "Item " + e.Position + " clicked", ToastLength.Short).Show ();
-                }
-            };
+            SupportFragmentManager.BeginTransaction ()
+                .Replace (Resource.Id.content_frame, fragment)
+                .Commit ();
         }
     }
 }

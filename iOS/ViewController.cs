@@ -1,13 +1,13 @@
 ﻿using System;
-
+using System.Linq;
 using UIKit;
+using Versus.Portable.Data;
 
 namespace Versus.iOS
 {
     public partial class ViewController : UIViewController
     {
-        int count = 1;
-
+        UITableView _table;
         public ViewController (IntPtr handle) : base (handle)
         {
         }
@@ -16,12 +16,20 @@ namespace Versus.iOS
         {
             base.ViewDidLoad ();
 
-            // Perform any additional setup after loading the view, typically from a nib.
-            Button.AccessibilityIdentifier = "myButton";
-            Button.TouchUpInside += delegate {
-                var title = string.Format ("{0} clicks!", count++);
-                Button.SetTitle (title, UIControlState.Normal);
-            };
+            _table = new UITableView (View.Bounds);
+            Add (_table);
+
+            FetchData ();
+        }
+
+        void FetchData ()
+        {
+          //  var entities = await FirebaseManager.Instance.GetAllCompetitions ();
+              var tableItems = new string [] { "Vegetables", "Fruits", "Flower Buds", "Legumes", "Bulbs", "Tubers" };
+
+
+          //  var tableItems = entities.Values.Select (i => i.Name).ToArray ();
+            _table.Source = new CompetitionSource (tableItems);
         }
 
         public override void DidReceiveMemoryWarning ()

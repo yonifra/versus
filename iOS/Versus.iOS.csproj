@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -110,6 +111,7 @@
     <Compile Include="ViewController.designer.cs">
       <DependentUpon>ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompetitionsSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Versus.Portable\Versus.Portable\Versus.Portable.csproj">
