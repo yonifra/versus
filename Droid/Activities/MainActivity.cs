@@ -44,6 +44,11 @@ namespace Versus.Droid.Activities
                     break;
                 }
             };
+
+            //if first time you will want to go ahead and click first item.
+            if (bundle == null) {
+                ListItemClicked (0);
+            }
         }
 
         private void ListItemClicked (int position)
@@ -53,9 +58,8 @@ namespace Versus.Droid.Activities
             case 0:
                 fragment = new CategoriesFragment ();
                 break;
-            case 1:
-                break;
-            case 2:
+            default:
+                fragment = new CategoriesFragment ();
                 break;
             }
 
