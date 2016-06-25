@@ -38,6 +38,8 @@ namespace Versus.Droid.Fragments
 
         async void LoadDataToGrid (View view)
         {
+            //if (!ConnectivityHelper.HasConnectivity (Activity)) return;
+
             var categoriesListView = view.FindViewById<ListView> (Resource.Id.categoriesListView);
 
             _categories = await FirebaseManager.Instance.GetAllCategories ();
@@ -56,13 +58,12 @@ namespace Versus.Droid.Fragments
 
                     if (categoriesListAdapter != null) {
                         var category = categoriesListAdapter.Categories [index];
+                        var fragment = new CompetitionsFragment ();
+                        fragment.SelectedCategory = category.Name;
 
-                        // Put the name of the selected category into the intent
-                        var competitionsActivity = new Intent (Activity, typeof (CompetitionsActivity));
-                        competitionsActivity.PutExtra ("categoryName", category.Name);
-
-                        // Start the competitions activity
-                        StartActivity (competitionsActivity);
+                        Activity.SupportFragmentManager.BeginTransaction ()
+                            .Replace (Resource.Id.content_frame, fragment)
+                            .Commit ();
                     }
                 } else {
 

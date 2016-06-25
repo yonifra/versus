@@ -103,6 +103,9 @@
     <Compile Include="Helpers\FontsHelper.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Fragments\CategoriesFragment.cs" />
+    <Compile Include="Helpers\ConnectivityHelper.cs" />
+    <Compile Include="Fragments\CompetitionsFragment.cs" />
+    <Compile Include="Fragments\CompetitionPageFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
