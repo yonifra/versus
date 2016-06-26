@@ -7,7 +7,8 @@ namespace Versus.iOS
 {
     public partial class ViewController : UIViewController
     {
-        UITableView _table;
+        private UITableView _table;
+
         public ViewController (IntPtr handle) : base (handle)
         {
         }
@@ -22,7 +23,7 @@ namespace Versus.iOS
             FetchData ();
         }
 
-        void FetchData ()
+        private void FetchData ()
         {
           //  var entities = await FirebaseManager.Instance.GetAllCompetitions ();
               var tableItems = new string [] { "Vegetables", "Fruits", "Flower Buds", "Legumes", "Bulbs", "Tubers" };

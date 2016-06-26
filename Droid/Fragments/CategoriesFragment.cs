@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Android.Content;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
-using Versus.Droid.Activities;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
@@ -24,51 +21,53 @@ namespace Versus.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
-
             base.OnCreateView(inflater, container, savedInstanceState);
 
             //var view = inflater.Inflate(Resource.Layout.fragment_categories, container, false);
-            var view = inflater.Inflate (Resource.Layout.fragment_categories, null);
+            var view = inflater.Inflate(Resource.Layout.fragment_categories, null);
 
-            LoadDataToGrid (view);
+            LoadDataToGrid(view);
 
             return view;
         }
 
-        async void LoadDataToGrid (View view)
+        private async void LoadDataToGrid(View view)
         {
             //if (!ConnectivityHelper.HasConnectivity (Activity)) return;
+            var categoriesListView = view.FindViewById<ListView>(Resource.Id.categoriesListView);
 
-            var categoriesListView = view.FindViewById<ListView> (Resource.Id.categoriesListView);
+            _categories = await FirebaseManager.Instance.GetAllCategories();
 
-            _categories = await FirebaseManager.Instance.GetAllCategories ();
-
-            if (_categories != null) {
-                categoriesListView.Adapter = new CategoriesListAdapter (Activity, _categories.Values);
+            if (_categories != null)
+            {
+                categoriesListView.Adapter = new CategoriesListAdapter(Activity, _categories.Values);
             }
 
-            categoriesListView.ItemClick += (sender, e) => {
+            categoriesListView.ItemClick += (sender, e) =>
+            {
                 var index = e.Position;
 
                 var lv = (sender as ListView);
 
-                if (lv != null) {
+                if (lv != null)
+                {
                     var categoriesListAdapter = lv.Adapter as CategoriesListAdapter;
 
-                    if (categoriesListAdapter != null) {
-                        var category = categoriesListAdapter.Categories [index];
-                        var fragment = new CompetitionsFragment ();
-                        fragment.SelectedCategory = category.Name;
+                    if (categoriesListAdapter != null)
+                    {
+                        var category = categoriesListAdapter.Categories[index];
+                        var fragment = new CompetitionsFragment { SelectedCategory = category.Name };
 
-                        Activity.SupportFragmentManager.BeginTransaction ()
-                            .Replace (Resource.Id.content_frame, fragment)
-                            .Commit ();
+                        Activity.SupportFragmentManager.BeginTransaction()
+                            .Replace(Resource.Id.content_frame, fragment)
+                            .Commit();
                     }
-                } else {
+                }
+                else
+                {
 
 #if DEBUG
-                    Snackbar.Make (view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
+                    Snackbar.Make(view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show();
 #endif
                 }
             };

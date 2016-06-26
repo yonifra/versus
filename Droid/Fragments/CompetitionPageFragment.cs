@@ -1,7 +1,6 @@
-﻿using System;
-using Versus.Portable.Entities;
+﻿using Versus.Portable.Entities;
 
-namespace Versus.Droid
+namespace Versus.Droid.Fragments
 {
     public class CompetitionPageFragment : Android.Support.V4.App.Fragment
     {
