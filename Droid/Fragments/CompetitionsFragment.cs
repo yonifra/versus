@@ -29,12 +29,12 @@ namespace Versus.Droid.Fragments
 
             _view = inflater.Inflate(Resource.Layout.fragment_competitions, null);
 
-            LoadDataToGrid(_view);
+            LoadDataToGridAsync(_view);
 
             return _view;
         }
 
-        private async void LoadDataToGrid(View view)
+        private async void LoadDataToGridAsync(View view)
         {
             await Task.Factory.StartNew(() => { GetAllCategoriesAsync(SelectedCategory); });
 
