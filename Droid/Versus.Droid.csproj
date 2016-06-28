@@ -97,7 +97,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Adapters\CompetitionListAdapter.cs" />
     <Compile Include="Activities\MainActivity.cs" />
-    <Compile Include="Activities\CompetitionsActivity.cs" />
     <Compile Include="Adapters\CategoriesListAdapter.cs" />
     <Compile Include="Activities\CompetitionPageActivity.cs" />
     <Compile Include="Helpers\FontsHelper.cs" />

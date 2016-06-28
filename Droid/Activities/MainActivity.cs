@@ -1,16 +1,17 @@
 ﻿using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
 using Versus.Droid.Fragments;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace Versus.Droid.Activities
 {
-    [Activity(Label = "Versus", LaunchMode = Android.Content.PM.LaunchMode.SingleTop, MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Versus", LaunchMode = LaunchMode.SingleTop, MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainActivity : BaseActivity
     {
-        //  DrawerLayout drawerLayout;
-        private NavigationView navigationView;
+        private NavigationView _navigationView;
+        private DrawerLayout _drawerLayout;
 
         protected override int LayoutResource => Resource.Layout.Main;
 
@@ -19,31 +20,14 @@ namespace Versus.Droid.Activities
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            //     SetContentView (Resource.Layout.Main);
+            _navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            _drawerLayout = FindViewById<DrawerLayout> (Resource.Id.drawer_layout);
 
-            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-
-            //  ActionBar.Title = competitionName;
-            SetSupportActionBar(toolbar);
-            SupportActionBar.Title = "Versus";
-
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            navigationView.NavigationItemSelected += (sender, e) =>
+            _navigationView.NavigationItemSelected += (sender, e) =>
             {
                 e.MenuItem.SetChecked(true);
 
-                switch (e.MenuItem.ItemId)
-                {
-                    case Resource.Id.nav_home:
-                        ListItemClicked(0);
-                        break;
-                    case Resource.Id.nav_search:
-                        ListItemClicked(1);
-                        break;
-                    case Resource.Id.nav_profile:
-                        ListItemClicked(2);
-                        break;
-                }
+                ListItemClicked (e.MenuItem.ItemId);
             };
 
             //if first time you will want to go ahead and click first item.
@@ -53,14 +37,20 @@ namespace Versus.Droid.Activities
             }
         }
 
-        private void ListItemClicked(int position)
+        private void ListItemClicked(int itemId, bool shouldCloseDrawer = true)
         {
             Android.Support.V4.App.Fragment fragment;
 
-            // TODO: Populate this list once fragments become available
-            switch (position)
+            // Close the drawer if item was clicked (configurable)
+            if (_drawerLayout != null && shouldCloseDrawer) {
+                _drawerLayout.CloseDrawers ();
+            }
+
+            // Depending on the item ID that was selected in the drawer,
+            // replace the fragment with the corresponding fragment
+            switch (itemId)
             {
-                case 0:
+                case Resource.Id.nav_home:
                     fragment = new CategoriesFragment();
                     break;
                 default:
