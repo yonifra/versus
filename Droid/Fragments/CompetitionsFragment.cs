@@ -36,7 +36,7 @@ namespace Versus.Droid.Fragments
 
         private async void LoadDataToGridAsync(View view)
         {
-            await Task.Factory.StartNew(() => { GetAllCategoriesAsync(SelectedCategory); });
+            await GetAllCategoriesAsync(SelectedCategory);
 
             var competitionsListView = view.FindViewById<ListView>(Resource.Id.competitionsListView);
             competitionsListView.Adapter = new CompetitionListAdapter(Activity, _competitions);
@@ -69,7 +69,7 @@ namespace Versus.Droid.Fragments
             };
         }
 
-        private async void GetAllCategoriesAsync(string categoryName)
+        private async Task GetAllCategoriesAsync(string categoryName)
         {
             if (string.IsNullOrEmpty(categoryName))
             {

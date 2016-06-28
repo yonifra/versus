@@ -42,7 +42,7 @@ namespace Versus.Droid.Fragments
         async void PopulateDataAsync (Android.Views.View view)
         {
             var competition = await FirebaseManager.Instance.GetCompetition (Competition.Name);
-            var parentView = View.FindViewById<FrameLayout> (Resource.Id.parentLayout);
+            var parentView = view.FindViewById<FrameLayout> (Resource.Id.parentLayout);
 
             if (competition != null) {
                 var e1ImageButton = view.FindViewById<ImageButton> (Resource.Id.leftEntityButton);
