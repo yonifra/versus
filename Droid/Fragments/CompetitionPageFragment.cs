@@ -15,17 +15,18 @@ namespace Versus.Droid.Fragments
     public class CompetitionPageFragment : Android.Support.V4.App.Fragment
     {
         private VsEntity _selectedEntity;
+        private TextView _leftVotesTextView;
+        private TextView _rightVotesTextView;
 
         public CompetitionPageFragment ()
         {
             RetainInstance = true;
         }
 
-        private void UpdateUiForSelectedEntity (TextView entityName, TextView entityDescription, TextView votingButton)
+        private void UpdateUiForSelectedEntity (TextView entityName, TextView entityDescription)
         {
             entityName.Text = _selectedEntity.Name;
             entityDescription.Text = _selectedEntity.Description;
-            votingButton.Text = "VOTE FOR " + _selectedEntity.Name;
         }
 
         public override Android.Views.View OnCreateView (Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
@@ -48,9 +49,12 @@ namespace Versus.Droid.Fragments
                 var e1ImageButton = view.FindViewById<ImageButton> (Resource.Id.leftEntityButton);
                 var e2ImageButton = view.FindViewById<ImageButton> (Resource.Id.rightEntityButton);
                 var entityName = view.FindViewById<AppCompatTextView> (Resource.Id.entityName);
-                var votingButton = view.FindViewById<AppCompatButton> (Resource.Id.votingButton);
+                var votingButton = view.FindViewById<FloatingActionButton> (Resource.Id.votingButton);
                 var entityDescription = view.FindViewById<AppCompatTextView> (Resource.Id.entityDescription);
-                FontsHelper.ApplyTypeface (view.Context.Assets, new List<TextView> { entityName, entityDescription });
+                _leftVotesTextView = view.FindViewById<TextView> (Resource.Id.leftEntityVotes);
+                _rightVotesTextView = view.FindViewById<TextView> (Resource.Id.rightEntityVotes);
+
+                FontsHelper.ApplyTypeface (view.Context.Assets, new List<TextView> { entityName, entityDescription, _leftVotesTextView, _rightVotesTextView });
 
                 var entities = await FirebaseManager.Instance.GetAllEntities ();
 
@@ -60,26 +64,37 @@ namespace Versus.Droid.Fragments
                 if (entity1 != null && entity2 != null) {
                     _selectedEntity = entity1;
 
+                    _leftVotesTextView.Text = competition.CompetitorScore1.ToString ();
+                    _rightVotesTextView.Text = competition.CompetitorScore2.ToString ();
+
                     // Load the image asynchonously
                     Picasso.With (view.Context).Load (entity1.ImageUrl).Into (e1ImageButton);
                     Picasso.With (view.Context).Load (entity2.ImageUrl).Into (e2ImageButton);
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
+                    UpdateUiForSelectedEntity (entityName, entityDescription);
 
                     votingButton.Click += (sender, args) => {
                         var index = _selectedEntity == entity1 ? 1 : 2;
                         FirebaseManager.Instance.UpdateVote (index, Competition.Name);
+                        switch (index) {
+                        case 1:
+                            _leftVotesTextView.Text = (competition.CompetitorScore1).ToString ();
+                            break;
+                        case 2:
+                            _rightVotesTextView.Text = (competition.CompetitorScore2).ToString ();
+                            break;
+                        }
                         Snackbar.Make (parentView, "Casted a vote for " + _selectedEntity.Name, Snackbar.LengthLong).Show ();
                     };
                 }
 
                 e1ImageButton.Click += (sender, args) => {
                     _selectedEntity = entity1;
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
+                    UpdateUiForSelectedEntity (entityName, entityDescription);
                 };
 
                 e2ImageButton.Click += (sender, args) => {
                     _selectedEntity = entity2;
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
+                    UpdateUiForSelectedEntity (entityName, entityDescription);
                 };
             }
         }
