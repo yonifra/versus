@@ -59,8 +59,9 @@ namespace Versus.Droid.Fragments
                         var fragment = new CompetitionsFragment { SelectedCategory = category.Name };
 
                         Activity.SupportFragmentManager.BeginTransaction()
-                            .Replace(Resource.Id.content_frame, fragment)
-                            .Commit();
+                                .Replace(Resource.Id.content_frame, fragment)
+                                .AddToBackStack(fragment.Tag)
+                                .Commit();
                     }
                 }
                 else

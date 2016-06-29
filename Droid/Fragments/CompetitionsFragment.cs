@@ -57,8 +57,9 @@ namespace Versus.Droid.Fragments
                         // Put the name of the selected category into the intent
                         var fragment = new CompetitionPageFragment { Competition = competition };
 
-                        Activity.SupportFragmentManager.BeginTransaction()
-                            .Replace(Resource.Id.content_frame, fragment)
+                        Activity.SupportFragmentManager.BeginTransaction ()
+                            .Replace (Resource.Id.content_frame, fragment)
+                            .AddToBackStack (fragment.Tag)
                             .Commit();
                     }
                 }
