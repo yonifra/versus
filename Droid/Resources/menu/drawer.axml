@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-	<group android:checkableBehavior="single">
-		<item android:id="@+id/nav_home" android:title="All categories" />
-		<item android:id="@+id/nav_friends" android:title="Trending competitions" />
-	</group>
 	<item android:title="Personalized" android:id="@+id/nav_personalizedGroup">
 		<menu>
 			<item android:id="@+id/nav_profile" android:title="My profile" />
@@ -11,12 +7,19 @@
 			<item android:id="@+id/nav_favs" android:title="My favorites" />
 		</menu>
 	</item>
+	
+	<group android:checkableBehavior="single">
+		<item android:id="@+id/nav_home" android:title="Categories" />
+		<item android:id="@+id/nav_friends" android:title="Trending competitions" />
+	</group>
+
 	<item android:title="Useful" android:id="@+id/nav_crossAppGroup">
 		<menu>
 			<item android:id="@+id/nav_search" android:title="Search" />
 			<item android:id="@+id/nav_logoutLogin" android:title="Login" />
 		</menu>
 	</item>
+	
 	<item android:title="Common" android:id="@+id/nav_moreStuffGroup">
 		<menu>
 			<item android:id="@+id/nav_settings" android:title="Settings" />
