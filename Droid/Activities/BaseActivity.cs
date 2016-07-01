@@ -19,6 +19,9 @@ namespace Versus.Droid.Activities
                 SetSupportActionBar (Toolbar);
                 SupportActionBar.SetDisplayHomeAsUpEnabled (true);
                 SupportActionBar.SetHomeButtonEnabled (true);
+                //SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.menu);
+                SupportActionBar.SetDisplayShowTitleEnabled (false);
+                SupportActionBar.SetLogo (Resource.Drawable.logo);
             }
         }
 

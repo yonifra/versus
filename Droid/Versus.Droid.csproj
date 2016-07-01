@@ -98,13 +98,13 @@
     <Compile Include="Adapters\CompetitionListAdapter.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Adapters\CategoriesListAdapter.cs" />
-    <Compile Include="Activities\CompetitionPageActivity.cs" />
     <Compile Include="Helpers\FontsHelper.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Fragments\CategoriesFragment.cs" />
     <Compile Include="Helpers\ConnectivityHelper.cs" />
     <Compile Include="Fragments\CompetitionsFragment.cs" />
     <Compile Include="Fragments\CompetitionPageFragment.cs" />
+    <Compile Include="Fragments\AboutFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -137,6 +137,8 @@
     <AndroidResource Include="Resources\values\theme.xml" />
     <AndroidResource Include="Resources\drawable\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable\ic_thumbs_up.png" />
+    <AndroidResource Include="Resources\layout\about_fragment.axml" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
