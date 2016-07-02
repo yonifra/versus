@@ -1,11 +1,21 @@
-﻿using Android.OS;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
 using Android.Views;
+using Android.Widget;
 
 namespace Versus.Droid.Fragments
 {
-    public class AboutFragment : Android.Support.V4.App.Fragment
+    public class LoginFragment : Android.Support.V4.App.Fragment
     {
-        public AboutFragment ()
+        public LoginFragment ()
         {
             RetainInstance = true;
         }
@@ -15,7 +25,7 @@ namespace Versus.Droid.Fragments
             // Use this to return your custom view for this Fragment
             base.OnCreateView (inflater, container, savedInstanceState);
 
-            var view = inflater.Inflate (Resource.Layout.about_fragment, null);
+            var view = inflater.Inflate (Resource.Layout.login_fragment, null);
 
             return view;
         }

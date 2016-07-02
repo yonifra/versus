@@ -53,9 +53,12 @@ namespace Versus.Droid.Activities
                 case Resource.Id.nav_home:
                     fragment = new CategoriesFragment();
                     break;
-            case Resource.Id.nav_about:
-                fragment = new AboutFragment ();
-                break;
+                case Resource.Id.nav_about:
+                    fragment = new AboutFragment ();
+                    break;
+                case Resource.Id.nav_logoutLogin:
+                    fragment = new LoginFragment ();
+                    break;
                 default:
                     fragment = new CategoriesFragment();
                     break;

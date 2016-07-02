@@ -105,6 +105,7 @@
     <Compile Include="Fragments\CompetitionsFragment.cs" />
     <Compile Include="Fragments\CompetitionPageFragment.cs" />
     <Compile Include="Fragments\AboutFragment.cs" />
+    <Compile Include="Fragments\LoginFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -135,10 +136,10 @@
     <AndroidResource Include="Resources\drawable\nav_header_background.jpg" />
     <AndroidResource Include="Resources\layout\fragment_categories.axml" />
     <AndroidResource Include="Resources\values\theme.xml" />
-    <AndroidResource Include="Resources\drawable\ic_checkmark.png" />
     <AndroidResource Include="Resources\drawable\ic_thumbs_up.png" />
     <AndroidResource Include="Resources\layout\about_fragment.axml" />
     <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\layout\login_fragment.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
