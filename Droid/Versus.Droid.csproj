@@ -140,6 +140,7 @@
     <AndroidResource Include="Resources\layout\about_fragment.axml" />
     <AndroidResource Include="Resources\drawable\logo.png" />
     <AndroidResource Include="Resources\layout\login_fragment.axml" />
+    <AndroidResource Include="Resources\drawable\menu.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -17,11 +17,14 @@ namespace Versus.Droid.Activities
 
             if (Toolbar != null) {
                 SetSupportActionBar (Toolbar);
-                SupportActionBar.SetDisplayHomeAsUpEnabled (true);
-                SupportActionBar.SetHomeButtonEnabled (true);
-                //SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.menu);
-                SupportActionBar.SetDisplayShowTitleEnabled (false);
-                SupportActionBar.SetLogo (Resource.Drawable.logo);
+             //   SupportActionBar.SetDisplayHomeAsUpEnabled (true);
+            //    SupportActionBar.SetHomeButtonEnabled (true);
+                SupportActionBar.SetDisplayShowHomeEnabled (true);
+                //     SupportActionBar.SetIcon (Resource.Drawable.menu);
+                //     SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.menu);
+                SupportActionBar.SetHomeButtonEnabled(true);
+                SupportActionBar.SetDisplayShowTitleEnabled (true);
+         //       SupportActionBar.SetLogo (Resource.Drawable.logo);
             }
         }
 
