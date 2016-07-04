@@ -1,36 +1,42 @@
 ﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="iOS Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid Status">
     <Files>
-      <File FileName="Droid/Activities/CompetitionPageActivity.cs" Line="30" Column="10" />
-      <File FileName="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" Line="171" Column="46" />
-      <File FileName="Droid/Activities/CompetitionsActivity.cs" Line="41" Column="66" />
-      <File FileName="Versus.Portable/Versus.Portable/Entities/VsEntity.cs" Line="8" Column="45" />
-      <File FileName="Droid/Helpers/FontsHelper.cs" Line="7" Column="31" />
-      <File FileName="Droid/Assets/AboutAssets.txt" Line="1" Column="1" />
-      <File FileName="Droid/Activities/MainActivity.cs" Line="21" Column="1" />
-      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="57" Column="1" />
-      <File FileName="Droid/Adapters/CategoriesListAdapter.cs" Line="24" Column="16" />
-      <File FileName="Droid/Properties/AndroidManifest.xml" Line="4" Column="67" />
-      <File FileName="../../../Library/Frameworks/Xamarin.Android.framework/Versions/6.1.0-71/lib/xbuild/Xamarin/Android/Xamarin.Android.Common.targets" Line="74" Column="91" />
-      <File FileName="Droid/Resources/values/styles.xml" Line="6" Column="1" />
-      <File FileName="Droid/Resources/values-v21/styles.xml" Line="10" Column="11" />
-      <File FileName="Droid/Resources/menu/drawer.axml" Line="23" Column="47" />
-      <File FileName="Droid/Resources/values/colors.xml" Line="7" Column="13" />
-      <File FileName="Droid Status" />
-      <File FileName="Droid/Activities/BaseActivity.cs" Line="15" Column="1" />
-      <File FileName="Droid/Fragments/CategoriesFragment.cs" Line="9" Column="1" />
+      <File FileName="Droid/Activities/MainActivity.cs" Line="54" Column="11" />
+      <File FileName="Droid/Activities/BaseActivity.cs" Line="25" Column="61" />
       <File FileName="versus Status" />
-      <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="iOS/Models/CompetitionsSource.cs" Line="21" Column="9" />
-      <File FileName="iOS/ViewController.cs" Line="32" Column="64" />
-      <File FileName="iOS Status" />
+      <File FileName="Droid/Fragments/LoginFragment.cs" Line="19" Column="10" />
+      <File FileName="Droid/Fragments/AboutFragment.cs" Line="4" Column="33" />
+      <File FileName="Droid/Fragments/CategoriesFragment.cs" Line="82" Column="6" />
+      <File FileName="Droid Status" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Versus" expanded="True">
+            <Node name="Versus.Droid" expanded="True" selected="True">
+              <Node name="Activities" expanded="True" />
+              <Node name="Fragments" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="drawable" expanded="True" />
+                <Node name="layout" expanded="True" />
+                <Node name="menu" expanded="True" />
+                <Node name="values" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Versus.Portable" expanded="True">
+              <Node name="Packages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <Breakpoint file="/Users/yonifra/versus/Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" line="169" column="1" />
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
+  <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" AndroidDesignerPreferredTheme="Theme.DeviceDefault" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Versus.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F8E30F8B-5C8C-4128-87C6-71D480D5F7A3" />
 </Properties>
