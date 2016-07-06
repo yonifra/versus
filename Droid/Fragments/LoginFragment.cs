@@ -2,6 +2,7 @@
 using System;
 using Android.App;
 using Android.Content;
+using Android.Gms.Auth.Api.SignIn;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using Android.Gms.Plus;
@@ -21,7 +22,7 @@ namespace Versus.Droid.Fragments
         const string KEY_IS_RESOLVING = "is_resolving";
         const string KEY_SHOULD_RESOLVE = "should_resolve";
 
-        private View _view;
+        View _view;
 
         GoogleApiClient mGoogleApiClient;
         TextView mStatus;
@@ -39,6 +40,14 @@ namespace Versus.Droid.Fragments
             Log.Debug (TAG, "onConnected:" + connectionHint);
 
             UpdateUI (true);
+
+    //        var result = mGoogleApiClient.;
+         //   GoogleSignInResult result = Auth.GoogleSignInApi.
+    //        GoogleSignInAccount acct = result.SignInAccount;
+    //        var personName = acct.DisplayName;
+      //      var personEmail = acct.Email;
+     //       var personId = acct.Id;
+      //      var personPhoto = acct.PhotoUrl;
         }
 
         public void OnConnectionFailed (ConnectionResult result)
