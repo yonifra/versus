@@ -41,13 +41,12 @@ namespace Versus.Droid.Fragments
 
             UpdateUI (true);
 
-    //        var result = mGoogleApiClient.;
-         //   GoogleSignInResult result = Auth.GoogleSignInApi.
-    //        GoogleSignInAccount acct = result.SignInAccount;
-    //        var personName = acct.DisplayName;
-      //      var personEmail = acct.Email;
-     //       var personId = acct.Id;
-      //      var personPhoto = acct.PhotoUrl;
+            //GoogleSignInResult result = mGoogleApiClient.GetConnectionResult(PlusClass.API).
+            //GoogleSignInAccount acct = result.SignInAccount;
+            //var personName = acct.DisplayName;
+            //var personEmail = acct.Email;
+            //var personId = acct.Id;
+            //var personPhoto = acct.PhotoUrl;
         }
 
         public void OnConnectionFailed (ConnectionResult result)
