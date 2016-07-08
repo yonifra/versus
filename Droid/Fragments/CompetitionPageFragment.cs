@@ -45,7 +45,8 @@ namespace Versus.Droid.Fragments
             var competition = await FirebaseManager.Instance.GetCompetition (Competition.Name);
             var parentView = view.FindViewById<FrameLayout> (Resource.Id.parentLayout);
 
-            if (competition != null) {
+            if (competition != null)
+            {
                 var e1ImageButton = view.FindViewById<ImageButton> (Resource.Id.leftEntityButton);
                 var e2ImageButton = view.FindViewById<ImageButton> (Resource.Id.rightEntityButton);
                 var entityName = view.FindViewById<AppCompatTextView> (Resource.Id.entityName);
@@ -61,7 +62,8 @@ namespace Versus.Droid.Fragments
                 var entity1 = entities.Values.FirstOrDefault (entity => string.Equals (entity.Name, competition.CompetitorName1, StringComparison.CurrentCultureIgnoreCase));
                 var entity2 = entities.Values.FirstOrDefault (entity => string.Equals (entity.Name, competition.CompetitorName2, StringComparison.CurrentCultureIgnoreCase));
 
-                if (entity1 != null && entity2 != null) {
+                if (entity1 != null && entity2 != null)
+                {
                     _selectedEntity = entity1;
 
                     _leftVotesTextView.Text = competition.CompetitorScore1.ToString ();
@@ -72,10 +74,12 @@ namespace Versus.Droid.Fragments
                     Picasso.With (view.Context).Load (entity2.ImageUrl).Into (e2ImageButton);
                     UpdateUiForSelectedEntity (entityName, entityDescription);
 
-                    votingButton.Click += (sender, args) => {
+                    votingButton.Click += (sender, args) =>
+                    {
                         var index = _selectedEntity == entity1 ? 1 : 2;
                         FirebaseManager.Instance.UpdateVote (index, Competition.Name);
-                        switch (index) {
+                        switch (index)
+                        {
                         case 1:
                             _leftVotesTextView.Text = (competition.CompetitorScore1).ToString ();
                             break;
@@ -87,12 +91,14 @@ namespace Versus.Droid.Fragments
                     };
                 }
 
-                e1ImageButton.Click += (sender, args) => {
+                e1ImageButton.Click += (sender, args) =>
+                {
                     _selectedEntity = entity1;
                     UpdateUiForSelectedEntity (entityName, entityDescription);
                 };
 
-                e2ImageButton.Click += (sender, args) => {
+                e2ImageButton.Click += (sender, args) =>
+                {
                     _selectedEntity = entity2;
                     UpdateUiForSelectedEntity (entityName, entityDescription);
                 };

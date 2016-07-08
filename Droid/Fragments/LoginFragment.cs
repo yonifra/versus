@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace Versus.Droid.Fragments
 {
-    public class LoginFragment : Android.Support.V4.App.Fragment,View.IOnClickListener,
+    public class LoginFragment : Android.Support.V4.App.Fragment, View.IOnClickListener,
         GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener
     {
         const string TAG = "LoginFragment";
@@ -53,20 +53,27 @@ namespace Versus.Droid.Fragments
         {
             Log.Debug (TAG, "onConnectionFailed:" + result);
 
-            if (!mIsResolving && mShouldResolve) {
-                if (result.HasResolution) {
-                    try {
+            if (!mIsResolving && mShouldResolve)
+            {
+                if (result.HasResolution)
+                {
+                    try
+                    {
                         result.StartResolutionForResult (Activity, RC_SIGN_IN);
                         mIsResolving = true;
-                    } catch (IntentSender.SendIntentException e) {
+                    }
+                    catch (IntentSender.SendIntentException e)
+                    {
                         Log.Error (TAG, "Could not resolve ConnectionResult.", e);
                         mIsResolving = false;
                         mGoogleApiClient.Connect ();
                     }
-                } else {
+                }
+                else {
                     ShowErrorDialog (result);
                 }
-            } else {
+            }
+            else {
                 UpdateUI (false);
             }
         }
@@ -85,14 +92,17 @@ namespace Versus.Droid.Fragments
         {
             int errorCode = connectionResult.ErrorCode;
 
-            if (GooglePlayServicesUtil.IsUserRecoverableError (errorCode)) {
+            if (GooglePlayServicesUtil.IsUserRecoverableError (errorCode))
+            {
                 var listener = new DialogInterfaceOnCancelListener ();
-                listener.OnCancelImpl = (dialog) => {
+                listener.OnCancelImpl = (dialog) =>
+                {
                     mShouldResolve = false;
                     UpdateUI (false);
                 };
                 GooglePlayServicesUtil.GetErrorDialog (errorCode, Activity, RC_SIGN_IN, listener).Show ();
-            } else {
+            }
+            else {
                 Snackbar.Make (_view, Resource.String.play_services_error_fmt, Snackbar.LengthShort).Show ();
 
                 mShouldResolve = false;
@@ -102,21 +112,24 @@ namespace Versus.Droid.Fragments
 
         public async void OnClick (View v)
         {
-            switch (v.Id) {
+            switch (v.Id)
+            {
             case Resource.Id.sign_in_button:
                 mStatus.Text = GetString (Resource.String.signing_in);
                 mShouldResolve = true;
                 mGoogleApiClient.Connect ();
                 break;
             case Resource.Id.sign_out_button:
-                if (mGoogleApiClient.IsConnected) {
+                if (mGoogleApiClient.IsConnected)
+                {
                     PlusClass.AccountApi.ClearDefaultAccount (mGoogleApiClient);
                     mGoogleApiClient.Disconnect ();
                 }
                 UpdateUI (false);
                 break;
             case Resource.Id.disconnect_button:
-                if (mGoogleApiClient.IsConnected) {
+                if (mGoogleApiClient.IsConnected)
+                {
                     PlusClass.AccountApi.ClearDefaultAccount (mGoogleApiClient);
                     await PlusClass.AccountApi.RevokeAccessAndDisconnect (mGoogleApiClient);
                     mGoogleApiClient.Disconnect ();
@@ -150,8 +163,10 @@ namespace Versus.Droid.Fragments
             base.OnActivityResult (requestCode, resultCode, data);
             Log.Debug (TAG, "onActivityResult:" + requestCode + ":" + resultCode + ":" + data);
 
-            if (requestCode == RC_SIGN_IN) {
-                if (resultCode != (int)Result.Ok) {
+            if (requestCode == RC_SIGN_IN)
+            {
+                if (resultCode != (int)Result.Ok)
+                {
                     mShouldResolve = false;
                 }
 
@@ -172,7 +187,8 @@ namespace Versus.Droid.Fragments
 
             _view = inflater.Inflate (Resource.Layout.login_fragment, null);
 
-            if (savedInstanceState != null) {
+            if (savedInstanceState != null)
+            {
                 mIsResolving = savedInstanceState.GetBoolean (KEY_IS_RESOLVING);
                 mShouldResolve = savedInstanceState.GetBoolean (KEY_SHOULD_RESOLVE);
             }
@@ -200,7 +216,8 @@ namespace Versus.Droid.Fragments
         {
             if (_view == null) return;
 
-            if (isSignedIn) {
+            if (isSignedIn)
+            {
                 var person = PlusClass.PeopleApi.GetCurrentPerson (mGoogleApiClient);
                 var name = string.Empty;
                 if (person != null)
@@ -209,7 +226,8 @@ namespace Versus.Droid.Fragments
 
                 _view.FindViewById (Resource.Id.sign_in_button).Visibility = ViewStates.Gone;
                 _view.FindViewById (Resource.Id.sign_out_and_disconnect).Visibility = ViewStates.Visible;
-            } else {
+            }
+            else {
                 mStatus.Text = GetString (Resource.String.signed_out);
 
                 _view.FindViewById (Resource.Id.sign_in_button).Enabled = true;

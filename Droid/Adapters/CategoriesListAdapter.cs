@@ -21,18 +21,18 @@ namespace Versus.Droid.Adapters
         private readonly Activity _context;
         private readonly IEnumerable<Category> _categories;
 
-        public CategoriesListAdapter(Activity context, IEnumerable<Category> categories)
+        public CategoriesListAdapter (Activity context, IEnumerable<Category> categories)
         {
             _context = context;
             _categories = categories;
         }
 
-        public override View GetView(int position, View convertView, ViewGroup parent)
+        public override View GetView (int position, View convertView, ViewGroup parent)
         {
             if (position < 0)
                 return null;
 
-            var view = convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.CompetitionListItemLayout, parent, false);
+            var view = convertView ?? _context.LayoutInflater.Inflate (Resource.Layout.CompetitionListItemLayout, parent, false);
 
             if (view == null)
                 return null;
@@ -42,37 +42,37 @@ namespace Versus.Droid.Adapters
             {
                 wrapper = new CategoryAdapterWrapper
                 {
-                    Name = view.FindViewById<TextView>(Resource.Id.compNameTextView),
-                    Description = view.FindViewById<TextView>(Resource.Id.compDescriptionTextView),
-                    Backdrop = view.FindViewById<ImageView>(Resource.Id.compBackdropImageView)
+                    Name = view.FindViewById<TextView> (Resource.Id.compNameTextView),
+                    Description = view.FindViewById<TextView> (Resource.Id.compDescriptionTextView),
+                    Backdrop = view.FindViewById<ImageView> (Resource.Id.compBackdropImageView)
                 };
                 view.Tag = wrapper;
             }
 
-            var category = _categories.ElementAt(position);
+            var category = _categories.ElementAt (position);
 
-            wrapper.Backdrop.SetBackgroundResource(Android.Resource.Color.Transparent);
+            wrapper.Backdrop.SetBackgroundResource (Android.Resource.Color.Transparent);
             wrapper.Name.Text = category.Name;
             wrapper.Description.Text = category.Description;
 
-            FontsHelper.ApplyTypeface(_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
+            FontsHelper.ApplyTypeface (_context.Assets, new List<TextView> { wrapper.Name, wrapper.Description });
 
             // Load the image asynchonously
-            Picasso.With(_context).Load(category.BackdropUrl).Into(wrapper.Backdrop);
+            Picasso.With (_context).Load (category.BackdropUrl).Into (wrapper.Backdrop);
 
             return view;
         }
 
-        public override int Count => _categories.Count();
+        public override int Count => _categories.Count ();
 
-        public override Java.Lang.Object GetItem(int position)
+        public override Java.Lang.Object GetItem (int position)
         {
             return position;
         }
 
-        public List<Category> Categories => _categories.ToList();
+        public List<Category> Categories => _categories.ToList ();
 
-        public override long GetItemId(int position)
+        public override long GetItemId (int position)
         {
             return position;
         }

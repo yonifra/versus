@@ -17,29 +17,29 @@ namespace Versus.Droid.Fragments
         private IEnumerable<VsCompetition> _competitions;
         private View _view;
 
-        public CompetitionsFragment()
+        public CompetitionsFragment ()
         {
             RetainInstance = true;
-            _competitions = new List<VsCompetition>();
+            _competitions = new List<VsCompetition> ();
         }
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreateView(inflater, container, savedInstanceState);
+            base.OnCreateView (inflater, container, savedInstanceState);
 
-            _view = inflater.Inflate(Resource.Layout.fragment_competitions, null);
+            _view = inflater.Inflate (Resource.Layout.fragment_competitions, null);
 
-            LoadDataToGridAsync(_view);
+            LoadDataToGridAsync (_view);
 
             return _view;
         }
 
-        private async void LoadDataToGridAsync(View view)
+        private async void LoadDataToGridAsync (View view)
         {
-            await GetAllCategoriesAsync(SelectedCategory);
+            await GetAllCategoriesAsync (SelectedCategory);
 
-            var competitionsListView = view.FindViewById<ListView>(Resource.Id.competitionsListView);
-            competitionsListView.Adapter = new CompetitionListAdapter(Activity, _competitions);
+            var competitionsListView = view.FindViewById<ListView> (Resource.Id.competitionsListView);
+            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _competitions);
 
             competitionsListView.ItemClick += (sender, e) =>
             {
@@ -50,7 +50,7 @@ namespace Versus.Droid.Fragments
                 if (lv != null)
                 {
                     var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
-                    var competition = competitionListAdapter?.Competitions[index];
+                    var competition = competitionListAdapter?.Competitions [index];
 
                     if (competition != null)
                     {
@@ -60,28 +60,28 @@ namespace Versus.Droid.Fragments
                         Activity.SupportFragmentManager.BeginTransaction ()
                             .Replace (Resource.Id.content_frame, fragment)
                             .AddToBackStack (fragment.Tag)
-                            .Commit();
+                            .Commit ();
                     }
                 }
                 else
                 {
-                    Snackbar.Make(_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show();
+                    Snackbar.Make (_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
                 }
             };
         }
 
-        private async Task GetAllCategoriesAsync(string categoryName)
+        private async Task GetAllCategoriesAsync (string categoryName)
         {
-            if (string.IsNullOrEmpty(categoryName))
+            if (string.IsNullOrEmpty (categoryName))
             {
-                Log.Debug(LOG_TAG, "Could not resolve category name");
-                var all = await FirebaseManager.Instance.GetAllCompetitions();
+                Log.Debug (LOG_TAG, "Could not resolve category name");
+                var all = await FirebaseManager.Instance.GetAllCompetitions ();
                 _competitions = all.Values;
             }
             else
             {
-                Log.Debug(LOG_TAG, "Found category " + categoryName);
-                _competitions = await FirebaseManager.Instance.GetCompetitions(categoryName);
+                Log.Debug (LOG_TAG, "Found category " + categoryName);
+                _competitions = await FirebaseManager.Instance.GetCompetitions (categoryName);
             }
         }
 
