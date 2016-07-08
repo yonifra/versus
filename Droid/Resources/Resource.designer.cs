@@ -2176,6 +2176,9 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int action_mode_close_button = 2131427396;
 			
+			// aapt resource value: 0x7f0b00ac
+			public const int action_search = 2131427500;
+			
 			// aapt resource value: 0x7f0b0045
 			public const int activity_chooser_view_content = 2131427397;
 			
@@ -2392,6 +2395,9 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0099
 			public const int media_actions = 2131427481;
 			
+			// aapt resource value: 0x7f0b00ad
+			public const int menu_item_share = 2131427501;
+			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
 			
@@ -2401,8 +2407,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0036
 			public const int multiply = 2131427382;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int nav_about = 2131427502;
+			// aapt resource value: 0x7f0b00ab
+			public const int nav_about = 2131427499;
 			
 			// aapt resource value: 0x7f0b00a9
 			public const int nav_crossAppGroup = 2131427497;
@@ -2419,23 +2425,14 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b00a7
 			public const int nav_home = 2131427495;
 			
-			// aapt resource value: 0x7f0b00ab
-			public const int nav_logoutLogin = 2131427499;
-			
-			// aapt resource value: 0x7f0b00ac
-			public const int nav_moreStuffGroup = 2131427500;
+			// aapt resource value: 0x7f0b00aa
+			public const int nav_logoutLogin = 2131427498;
 			
 			// aapt resource value: 0x7f0b00a3
 			public const int nav_personalizedGroup = 2131427491;
 			
 			// aapt resource value: 0x7f0b00a4
 			public const int nav_profile = 2131427492;
-			
-			// aapt resource value: 0x7f0b00aa
-			public const int nav_search = 2131427498;
-			
-			// aapt resource value: 0x7f0b00ad
-			public const int nav_settings = 2131427501;
 			
 			// aapt resource value: 0x7f0b0095
 			public const int nav_view = 2131427477;
@@ -2895,6 +2892,9 @@ namespace Versus.Droid
 			
 			// aapt resource value: 0x7f0d0000
 			public const int drawer = 2131558400;
+			
+			// aapt resource value: 0x7f0d0001
+			public const int menu = 2131558401;
 			
 			static Menu()
 			{
