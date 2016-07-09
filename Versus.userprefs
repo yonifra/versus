@@ -1,36 +1,8 @@
 ﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Droid Status">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Fragments/LoginFragment.cs">
     <Files>
-      <File FileName="Droid/Activities/MainActivity.cs" Line="54" Column="11" />
-      <File FileName="Droid/Activities/BaseActivity.cs" Line="25" Column="61" />
-      <File FileName="versus Status" />
-      <File FileName="Droid/Fragments/LoginFragment.cs" Line="19" Column="10" />
-      <File FileName="Droid/Fragments/AboutFragment.cs" Line="4" Column="33" />
-      <File FileName="Droid/Fragments/CategoriesFragment.cs" Line="82" Column="6" />
-      <File FileName="Droid Status" />
+      <File FileName="Droid/Fragments/LoginFragment.cs" Line="43" Column="13" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Versus" expanded="True">
-            <Node name="Versus.Droid" expanded="True" selected="True">
-              <Node name="Activities" expanded="True" />
-              <Node name="Fragments" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Resources" expanded="True">
-                <Node name="drawable" expanded="True" />
-                <Node name="layout" expanded="True" />
-                <Node name="menu" expanded="True" />
-                <Node name="values" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Versus.Portable" expanded="True">
-              <Node name="Packages" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

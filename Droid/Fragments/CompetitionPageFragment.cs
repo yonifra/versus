@@ -45,7 +45,7 @@ namespace Versus.Droid.Fragments
             var setShareIntent = new Intent (Intent.ActionSend);
             setShareIntent.SetType ("text/plain");
             setShareIntent.PutExtra (Intent.ExtraSubject, GetString (Resource.String.share_competition_message_subject));
-            setShareIntent.PutExtra (Intent.ExtraText, "I just voted in " + Competition.Name + " for " + _selectedEntity.Name +". How about you?");
+            setShareIntent.PutExtra (Intent.ExtraText, "I just voted in " + Competition.Name + " for " + _selectedEntity.Name +". How about you? #Versus");
 
             return setShareIntent;
         }
@@ -117,6 +117,12 @@ namespace Versus.Droid.Fragments
                     _selectedEntity = entity2;
                     UpdateUiForSelectedEntity (entityName, entityDescription);
                 };
+
+                var progressBar = view.FindViewById<ProgressBar> (Resource.Id.loadingCompetitionProgressBar);
+                var mainLayout = view.FindViewById<LinearLayout> (Resource.Id.mainCompetitionLayout);
+
+                progressBar.Visibility = Android.Views.ViewStates.Gone;
+                mainLayout.Visibility = Android.Views.ViewStates.Visible;
             }
         }
 
