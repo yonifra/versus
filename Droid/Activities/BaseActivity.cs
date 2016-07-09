@@ -10,21 +10,22 @@ namespace Versus.Droid.Activities
 
         protected override void OnCreate (Bundle bundle)
         {
-          //  Xamarin.Insights.Initialize (XamarinInsights.ApiKey, this);
+            //  Xamarin.Insights.Initialize (XamarinInsights.ApiKey, this);
             base.OnCreate (bundle);
             SetContentView (LayoutResource);
             Toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
 
-            if (Toolbar != null) {
+            if (Toolbar != null)
+            {
                 SetSupportActionBar (Toolbar);
-             //   SupportActionBar.SetDisplayHomeAsUpEnabled (true);
-            //    SupportActionBar.SetHomeButtonEnabled (true);
+                //   SupportActionBar.SetDisplayHomeAsUpEnabled (true);
+                //    SupportActionBar.SetHomeButtonEnabled (true);
                 SupportActionBar.SetDisplayShowHomeEnabled (true);
                 //     SupportActionBar.SetIcon (Resource.Drawable.menu);
                 //     SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.menu);
-                SupportActionBar.SetHomeButtonEnabled(true);
+                SupportActionBar.SetHomeButtonEnabled (true);
                 SupportActionBar.SetDisplayShowTitleEnabled (true);
-         //       SupportActionBar.SetLogo (Resource.Drawable.logo);
+                //       SupportActionBar.SetLogo (Resource.Drawable.logo);
             }
         }
 

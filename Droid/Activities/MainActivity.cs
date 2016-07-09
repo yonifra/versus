@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
@@ -17,7 +18,6 @@ namespace Versus.Droid.Activities
         private NavigationView _navigationView;
         private DrawerLayout _drawerLayout;
         private Android.Support.V7.Widget.Toolbar _toolbar;
-        private Android.Widget.ShareActionProvider _shareActionProvider;
 
         protected override int LayoutResource => Resource.Layout.Main;
 
@@ -43,8 +43,6 @@ namespace Versus.Droid.Activities
             {
                 ListItemClicked (0);
             }
-
-
         }
 
         public override bool OnPrepareOptionsMenu (Android.Views.IMenu menu)
@@ -60,21 +58,23 @@ namespace Versus.Droid.Activities
                 var item = menu.FindItem (Resource.Id.menu_item_share);
 
                 // Fetch and store ShareActionProvider
-
-                //TODO: Fix this to get the action provider for the share!
-                // _shareActionProvider = (Android.Widget.ShareActionProvider)item.ActionProvider;
+                if (item != null)
+                {
+                    item.SetIntent (CreateShareIntent ());
+                }
             }
 
             return base.OnPrepareOptionsMenu (menu);
         }
 
-        // Call to update the share intent
-        private void setShareIntent (Intent shareIntent)
+        Intent CreateShareIntent ()
         {
-            if (_shareActionProvider != null)
-            {
-                _shareActionProvider.SetShareIntent (shareIntent);
-            }
+            var setShareIntent = new Intent (Intent.ActionSend);
+            setShareIntent.SetType ("text/plain");
+            setShareIntent.PutExtra (Intent.ExtraSubject, GetString (Resource.String.share_global_message_subject));
+            setShareIntent.PutExtra (Intent.ExtraText, GetString(Resource.String.share_global_message_text) + " " + GetString(Resource.String.app_store_url));
+
+            return setShareIntent;
         }
 
         private void ListItemClicked (int itemId, bool shouldCloseDrawer = true)

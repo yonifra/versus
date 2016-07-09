@@ -2988,6 +2988,9 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f070036
 			public const int app_name = 2131165238;
 			
+			// aapt resource value: 0x7f07003d
+			public const int app_store_url = 2131165245;
+			
 			// aapt resource value: 0x7f07001f
 			public const int appbar_scrolling_view_behavior = 2131165215;
 			
@@ -3095,6 +3098,18 @@ namespace Versus.Droid
 			
 			// aapt resource value: 0x7f07003a
 			public const int play_services_error_fmt = 2131165242;
+			
+			// aapt resource value: 0x7f070040
+			public const int share_competition_message_subject = 2131165248;
+			
+			// aapt resource value: 0x7f070041
+			public const int share_competition_message_text = 2131165249;
+			
+			// aapt resource value: 0x7f07003e
+			public const int share_global_message_subject = 2131165246;
+			
+			// aapt resource value: 0x7f07003f
+			public const int share_global_message_text = 2131165247;
 			
 			// aapt resource value: 0x7f07003b
 			public const int sign_out = 2131165243;

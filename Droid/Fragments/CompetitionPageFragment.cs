@@ -40,6 +40,16 @@ namespace Versus.Droid.Fragments
             return view;
         }
 
+        Intent CreateShareIntent ()
+        {
+            var setShareIntent = new Intent (Intent.ActionSend);
+            setShareIntent.SetType ("text/plain");
+            setShareIntent.PutExtra (Intent.ExtraSubject, GetString (Resource.String.share_competition_message_subject));
+            setShareIntent.PutExtra (Intent.ExtraText, "I just voted in " + Competition.Name + " for " + _selectedEntity.Name +". How about you?");
+
+            return setShareIntent;
+        }
+
         async void PopulateDataAsync (Android.Views.View view)
         {
             var competition = await FirebaseManager.Instance.GetCompetition (Competition.Name);
@@ -87,7 +97,12 @@ namespace Versus.Droid.Fragments
                             _rightVotesTextView.Text = (competition.CompetitorScore2).ToString ();
                             break;
                         }
-                        Snackbar.Make (parentView, "Casted a vote for " + _selectedEntity.Name, Snackbar.LengthLong).Show ();
+                        Snackbar.Make (parentView, "Casted a vote for " + _selectedEntity.Name, Snackbar.LengthLong)
+                                .SetAction("Share", (v) =>
+                                {
+                                    StartActivity(CreateShareIntent ());
+                                })
+                                .Show ();
                     };
                 }
 
