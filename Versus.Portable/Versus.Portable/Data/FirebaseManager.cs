@@ -20,8 +20,13 @@ namespace Versus.Portable.Data
         private const string CompetitionsName = "competitions";
         private const string EntitiesName = "entities";
         private Dictionary<string, VsCompetition> _competitions;
+        private Dictionary<string, VsCompetition> _trendingCompetitions;
         private Dictionary<string, Category> _categories;
         private Dictionary<string, VsEntity> _entities;
+
+        // Competitions with more than the threshold vote counts will be considered "trending"
+        const int THRESHOLD = 40;
+
 
         public static FirebaseManager Instance => _instance ?? (_instance = new FirebaseManager());
 
@@ -174,6 +179,26 @@ namespace Versus.Portable.Data
             }
 
             return _competitions;
+        }
+
+        /// <summary>
+        /// Gets all the currently trending competitions
+        /// </summary>
+        /// <returns>The all competitions.</returns>
+        /// <param name="shouldRefresh">If set to <c>true</c> should refresh.</param>
+        public async Task<Dictionary<string, VsCompetition>> GetTrendingCompetitions (int maxCompetitions = 20, bool shouldRefresh = false)
+        {
+            if (_trendingCompetitions == null || (_competitions == null || shouldRefresh))
+            {
+                await GetAllCompetitions (shouldRefresh);
+                _trendingCompetitions = new Dictionary<string, VsCompetition> ();
+            }
+
+            _trendingCompetitions = _competitions
+                .Where (cm => cm.Value.CompetitorScore1 + cm.Value.CompetitorScore2 > THRESHOLD)
+                .ToDictionary (o => o.Key, o => o.Value);
+
+            return _trendingCompetitions;
         }
 
         /// <summary>

@@ -115,6 +115,7 @@
     <Compile Include="Fragments\CompetitionPageFragment.cs" />
     <Compile Include="Fragments\AboutFragment.cs" />
     <Compile Include="Fragments\LoginFragment.cs" />
+    <Compile Include="Fragments\TrendingCompetitionsFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -153,6 +154,8 @@
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_google.png" />
     <AndroidResource Include="Resources\menu\menu.xml" />
+    <AndroidResource Include="Resources\drawable\ic_share_white.zip" />
+    <AndroidResource Include="Resources\drawable\cryptocodes.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

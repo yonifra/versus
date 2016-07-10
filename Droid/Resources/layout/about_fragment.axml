@@ -8,6 +8,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">
+        <ImageView
+            android:layout_width="171dp"
+            android:layout_height="36dp"
+            android:src="@drawable/cryptocodes" />
         <TextView
             android:text="Made by Cryptocodes"
             android:textSize="16dp"
