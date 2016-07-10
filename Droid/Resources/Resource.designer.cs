@@ -2182,8 +2182,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int action_mode_close_button = 2131427396;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int action_search = 2131427502;
+			// aapt resource value: 0x7f0b00af
+			public const int action_search = 2131427503;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int activity_chooser_view_content = 2131427397;
@@ -2407,8 +2407,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b009b
 			public const int media_actions = 2131427483;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int menu_item_share = 2131427503;
+			// aapt resource value: 0x7f0b00b0
+			public const int menu_item_share = 2131427504;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -2419,32 +2419,32 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0036
 			public const int multiply = 2131427382;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int nav_about = 2131427501;
-			
-			// aapt resource value: 0x7f0b00ab
-			public const int nav_crossAppGroup = 2131427499;
-			
-			// aapt resource value: 0x7f0b00a7
-			public const int nav_favCompetitions = 2131427495;
-			
-			// aapt resource value: 0x7f0b00a8
-			public const int nav_favs = 2131427496;
+			// aapt resource value: 0x7f0b00ae
+			public const int nav_about = 2131427502;
 			
 			// aapt resource value: 0x7f0b00aa
-			public const int nav_friends = 2131427498;
-			
-			// aapt resource value: 0x7f0b00a9
-			public const int nav_home = 2131427497;
+			public const int nav_categories = 2131427498;
 			
 			// aapt resource value: 0x7f0b00ac
-			public const int nav_logoutLogin = 2131427500;
+			public const int nav_crossAppGroup = 2131427500;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int nav_personalizedGroup = 2131427493;
+			// aapt resource value: 0x7f0b00a8
+			public const int nav_favCompetitions = 2131427496;
+			
+			// aapt resource value: 0x7f0b00a9
+			public const int nav_favs = 2131427497;
+			
+			// aapt resource value: 0x7f0b00ad
+			public const int nav_logoutLogin = 2131427501;
 			
 			// aapt resource value: 0x7f0b00a6
-			public const int nav_profile = 2131427494;
+			public const int nav_personalizedGroup = 2131427494;
+			
+			// aapt resource value: 0x7f0b00a7
+			public const int nav_profile = 2131427495;
+			
+			// aapt resource value: 0x7f0b00ab
+			public const int nav_trending = 2131427499;
 			
 			// aapt resource value: 0x7f0b0097
 			public const int nav_view = 2131427479;
@@ -2643,6 +2643,9 @@ namespace Versus.Droid
 			
 			// aapt resource value: 0x7f0b0074
 			public const int touch_outside = 2131427444;
+			
+			// aapt resource value: 0x7f0b00a5
+			public const int trendingCompetitionsListView = 2131427493;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int up = 2131427338;
@@ -2888,6 +2891,9 @@ namespace Versus.Droid
 			
 			// aapt resource value: 0x7f040039
 			public const int toolbar = 2130968633;
+			
+			// aapt resource value: 0x7f04003a
+			public const int trending_fragment = 2130968634;
 			
 			static Layout()
 			{

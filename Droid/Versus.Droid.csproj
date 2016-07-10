@@ -156,6 +156,7 @@
     <AndroidResource Include="Resources\menu\menu.xml" />
     <AndroidResource Include="Resources\drawable\ic_share_white.zip" />
     <AndroidResource Include="Resources\drawable\cryptocodes.png" />
+    <AndroidResource Include="Resources\layout\trending_fragment.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

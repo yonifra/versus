@@ -91,18 +91,21 @@ namespace Versus.Droid.Activities
             // replace the fragment with the corresponding fragment
             switch (itemId)
             {
-            case Resource.Id.nav_home:
-                fragment = new CategoriesFragment ();
-                break;
-            case Resource.Id.nav_about:
-                fragment = new AboutFragment ();
-                break;
-            case Resource.Id.nav_logoutLogin:
-                fragment = new LoginFragment ();
-                break;
-            default:
-                fragment = new CategoriesFragment ();
-                break;
+                case Resource.Id.nav_categories:
+                    fragment = new CategoriesFragment ();
+                    break;
+                case Resource.Id.nav_about:
+                    fragment = new AboutFragment ();
+                    break;
+                case Resource.Id.nav_logoutLogin:
+                    fragment = new LoginFragment ();
+                    break;
+                case Resource.Id.nav_trending:
+                    fragment = new TrendingCompetitionsFragment ();
+                    break;
+                default:
+                    fragment = new CategoriesFragment ();
+                    break;
             }
 
             // Make the actual change of fragments

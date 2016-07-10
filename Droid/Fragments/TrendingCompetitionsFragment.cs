@@ -28,7 +28,7 @@ namespace Versus.Droid.Fragments
         {
             base.OnCreateView (inflater, container, savedInstanceState);
 
-            _view = inflater.Inflate (Resource.Layout.fragment_trending_competitions, null);
+            _view = inflater.Inflate (Resource.Layout.trending_fragment, null);
 
             LoadDataToGridAsync (_view);
 
