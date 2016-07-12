@@ -21,11 +21,13 @@ namespace Versus.Portable.Data
         private const string EntitiesName = "entities";
         private Dictionary<string, VsCompetition> _competitions;
         private Dictionary<string, VsCompetition> _trendingCompetitions;
+        private Dictionary<string, VsCompetition> _endingSoonCompetitions;
         private Dictionary<string, Category> _categories;
         private Dictionary<string, VsEntity> _entities;
 
         // Competitions with more than the threshold vote counts will be considered "trending"
         const int THRESHOLD = 40;
+        private readonly TimeSpan ENDING_SOON_THRESHOLD = TimeSpan.FromDays (3);
 
 
         public static FirebaseManager Instance => _instance ?? (_instance = new FirebaseManager());
@@ -87,6 +89,26 @@ namespace Versus.Portable.Data
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets all the ending soon competitions
+        /// </summary>
+        /// <returns>The ending soon competitions.</returns>
+        /// <param name="shouldRefresh">If set to <c>true</c> should refresh.</param>
+        public async Task<Dictionary<string, VsCompetition>> GetEndingSoonCompetitions (bool shouldRefresh = false)
+        {
+            if (_endingSoonCompetitions == null || (_competitions == null || shouldRefresh))
+            {
+                await GetAllCompetitions (shouldRefresh);
+                _endingSoonCompetitions = new Dictionary<string, VsCompetition> ();
+            }
+
+            _endingSoonCompetitions = _competitions
+                .Where (cm => DateTime.Now - cm.Value.EndingDate <= ENDING_SOON_THRESHOLD)
+                .ToDictionary (o => o.Key, o => o.Value);
+
+            return _endingSoonCompetitions;
         }
 
         /// <summary>

@@ -116,6 +116,7 @@
     <Compile Include="Fragments\AboutFragment.cs" />
     <Compile Include="Fragments\LoginFragment.cs" />
     <Compile Include="Fragments\TrendingCompetitionsFragment.cs" />
+    <Compile Include="Fragments\EndingSoonFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -157,6 +158,7 @@
     <AndroidResource Include="Resources\drawable\ic_share_white.zip" />
     <AndroidResource Include="Resources\drawable\cryptocodes.png" />
     <AndroidResource Include="Resources\layout\trending_fragment.axml" />
+    <AndroidResource Include="Resources\layout\ending_soon_fragment.axml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -103,6 +103,9 @@ namespace Versus.Droid.Activities
                 case Resource.Id.nav_trending:
                     fragment = new TrendingCompetitionsFragment ();
                     break;
+                case Resource.Id.nav_endingSoon:
+                    fragment = new EndingSoonFragment ();
+                    break;
                 default:
                     fragment = new CategoriesFragment ();
                     break;

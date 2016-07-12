@@ -5,6 +5,7 @@ namespace Versus.Portable.Entities
     public class VsCompetition
     {
         public DateTime EndingDate { get; set; }
+        public DateTime StartingDate { get; set; }
         public string StartedBy { get; set; }
         public string BackdropUrl { get; set; }
         public string Description { get; set; }

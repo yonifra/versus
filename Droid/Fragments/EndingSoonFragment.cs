@@ -13,47 +13,48 @@ using Versus.Portable.Entities;
 
 namespace Versus.Droid.Fragments
 {
-    public class TrendingCompetitionsFragment : Android.Support.V4.App.Fragment
+    public class EndingSoonFragment: Android.Support.V4.App.Fragment
     {
-        private const string LOG_TAG = "TRENDING_COMPETITIONS_FRAGMENT";
-        private IEnumerable<VsCompetition> _trendingCompetitions;
+        private const string LOG_TAG = "ENDING_COMPETITIONS_FRAGMENT";
+        private IEnumerable<VsCompetition> _endingSoonCompetitions;
         private View _view;
 
-        public TrendingCompetitionsFragment ()
+        public EndingSoonFragment ()
         {
             RetainInstance = true;
-            _trendingCompetitions = new List<VsCompetition> ();
+            _endingSoonCompetitions = new List<VsCompetition> ();
         }
 
         public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView (inflater, container, savedInstanceState);
 
-            _view = inflater.Inflate (Resource.Layout.trending_fragment, null);
+            _view = inflater.Inflate (Resource.Layout.ending_soon_fragment, null);
 
-            LoadDataToGridAsync (_view);
+            LoadDataToGridAsync ();
 
             return _view;
         }
 
-        private async void LoadDataToGridAsync (View view)
+        private async void LoadDataToGridAsync ()
         {
-            await GetTrendingCompetitionsAsync ();
+            await GetEndingCompetitionsAsync ();
 
-            if (_trendingCompetitions != null && _trendingCompetitions.Any ())
+            if (_endingSoonCompetitions != null && _endingSoonCompetitions.Any ())
             {
-                var textView = view.FindViewById<TextView> (Resource.Id.noTrendingCompetitionsMessage);
+                // Hide the text view
+                var textView = _view.FindViewById<TextView> (Resource.Id.noEndingSoonCompetitionsMessage);
                 textView.Visibility = ViewStates.Invisible;
             }
-            else 
+            else
             {
-                Snackbar.Make (_view, "No trending competitions found", Snackbar.LengthShort).Show ();
+                Snackbar.Make (_view, "No ending soon competitions", Snackbar.LengthShort).Show ();
                 return;
             }
 
-            var competitionsListView = view.FindViewById<ListView> (Resource.Id.trendingCompetitionsListView);
+            var competitionsListView = _view.FindViewById<ListView> (Resource.Id.endingSoonCompetitionsListView);
             competitionsListView.Visibility = ViewStates.Visible;
-            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _trendingCompetitions);
+            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _endingSoonCompetitions);
 
             competitionsListView.ItemClick += (sender, e) =>
             {
@@ -77,19 +78,18 @@ namespace Versus.Droid.Fragments
                             .Commit ();
                     }
                 }
-                else
-                {
-                    Snackbar.Make (_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
-                }
             };
         }
 
-        private async Task GetTrendingCompetitionsAsync ()
+        private async Task GetEndingCompetitionsAsync ()
         {
-                Log.Debug (LOG_TAG, "Fetching trending competitions");
-            var trending = await FirebaseManager.Instance.GetTrendingCompetitions ();
+            Log.Debug (LOG_TAG, "Fetching ending soon competitions");
+            var ending = await FirebaseManager.Instance.GetEndingSoonCompetitions ();
 
-            _trendingCompetitions = trending.Values;
+            if (ending != null)
+            {
+                _endingSoonCompetitions = ending.Values;
+            }
         }
     }
 }

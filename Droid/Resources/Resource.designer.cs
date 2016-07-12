@@ -2137,8 +2137,8 @@ namespace Versus.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b0098
-			public const int action0 = 2131427480;
+			// aapt resource value: 0x7f0b009a
+			public const int action0 = 2131427482;
 			
 			// aapt resource value: 0x7f0b0062
 			public const int action_bar = 2131427426;
@@ -2164,8 +2164,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0063
 			public const int action_context_bar = 2131427427;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int action_divider = 2131427484;
+			// aapt resource value: 0x7f0b009e
+			public const int action_divider = 2131427486;
 			
 			// aapt resource value: 0x7f0b0004
 			public const int action_menu_divider = 2131427332;
@@ -2182,8 +2182,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0044
 			public const int action_mode_close_button = 2131427396;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int action_search = 2131427503;
+			// aapt resource value: 0x7f0b00b3
+			public const int action_search = 2131427507;
 			
 			// aapt resource value: 0x7f0b0045
 			public const int activity_chooser_view_content = 2131427397;
@@ -2212,11 +2212,11 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b004c
 			public const int buttonPanel = 2131427404;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int cancel_action = 2131427481;
+			// aapt resource value: 0x7f0b009b
+			public const int cancel_action = 2131427483;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int categoriesListView = 2131427453;
+			// aapt resource value: 0x7f0b007f
+			public const int categoriesListView = 2131427455;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int center = 2131427356;
@@ -2230,8 +2230,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b005a
 			public const int checkbox = 2131427418;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int chronometer = 2131427487;
+			// aapt resource value: 0x7f0b00a1
+			public const int chronometer = 2131427489;
 			
 			// aapt resource value: 0x7f0b0025
 			public const int clip_horizontal = 2131427365;
@@ -2251,14 +2251,14 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0072
 			public const int compNameTextView = 2131427442;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int competitionsListView = 2131427464;
+			// aapt resource value: 0x7f0b008a
+			public const int competitionsListView = 2131427466;
 			
 			// aapt resource value: 0x7f0b0052
 			public const int contentPanel = 2131427410;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int content_frame = 2131427478;
+			// aapt resource value: 0x7f0b0098
+			public const int content_frame = 2131427480;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int custom = 2131427416;
@@ -2293,17 +2293,17 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b002f
 			public const int disableHome = 2131427375;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int disconnect_button = 2131427473;
-			
 			// aapt resource value: 0x7f0b0093
-			public const int drawer_layout = 2131427475;
+			public const int disconnect_button = 2131427475;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int editTextPassword = 2131427467;
+			// aapt resource value: 0x7f0b0095
+			public const int drawer_layout = 2131427477;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int editTextUsername = 2131427466;
+			// aapt resource value: 0x7f0b008d
+			public const int editTextPassword = 2131427469;
+			
+			// aapt resource value: 0x7f0b008c
+			public const int editTextUsername = 2131427468;
 			
 			// aapt resource value: 0x7f0b0064
 			public const int edit_query = 2131427428;
@@ -2311,8 +2311,11 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b001f
 			public const int end = 2131427359;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int end_padder = 2131427492;
+			// aapt resource value: 0x7f0b00a6
+			public const int end_padder = 2131427494;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int endingSoonCompetitionsListView = 2131427453;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int enterAlways = 2131427348;
@@ -2320,11 +2323,11 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0015
 			public const int enterAlwaysCollapsed = 2131427349;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int entityDescription = 2131427461;
+			// aapt resource value: 0x7f0b0087
+			public const int entityDescription = 2131427463;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int entityName = 2131427460;
+			// aapt resource value: 0x7f0b0086
+			public const int entityName = 2131427462;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int exitUntilCollapsed = 2131427350;
@@ -2365,8 +2368,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0047
 			public const int image = 2131427399;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int info = 2131427491;
+			// aapt resource value: 0x7f0b00a5
+			public const int info = 2131427493;
 			
 			// aapt resource value: 0x7f0b0001
 			public const int item_touch_helper_previous_elevation = 2131427329;
@@ -2374,20 +2377,20 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0021
 			public const int left = 2131427361;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int leftEntityButton = 2131427456;
-			
 			// aapt resource value: 0x7f0b0082
-			public const int leftEntityVotes = 2131427458;
+			public const int leftEntityButton = 2131427458;
+			
+			// aapt resource value: 0x7f0b0084
+			public const int leftEntityVotes = 2131427460;
 			
 			// aapt resource value: 0x7f0b0010
 			public const int light = 2131427344;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int line1 = 2131427485;
+			// aapt resource value: 0x7f0b009f
+			public const int line1 = 2131427487;
 			
-			// aapt resource value: 0x7f0b00a1
-			public const int line3 = 2131427489;
+			// aapt resource value: 0x7f0b00a3
+			public const int line3 = 2131427491;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int listMode = 2131427373;
@@ -2395,20 +2398,20 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0049
 			public const int list_item = 2131427401;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int loadingCompetitionProgressBar = 2131427462;
+			// aapt resource value: 0x7f0b0088
+			public const int loadingCompetitionProgressBar = 2131427464;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int loginButton = 2131427468;
+			// aapt resource value: 0x7f0b008e
+			public const int loginButton = 2131427470;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int mainCompetitionLayout = 2131427455;
+			// aapt resource value: 0x7f0b0081
+			public const int mainCompetitionLayout = 2131427457;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int media_actions = 2131427483;
+			// aapt resource value: 0x7f0b009d
+			public const int media_actions = 2131427485;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int menu_item_share = 2131427504;
+			// aapt resource value: 0x7f0b00b4
+			public const int menu_item_share = 2131427508;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -2419,41 +2422,50 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0036
 			public const int multiply = 2131427382;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int nav_about = 2131427502;
-			
-			// aapt resource value: 0x7f0b00aa
-			public const int nav_categories = 2131427498;
-			
-			// aapt resource value: 0x7f0b00ac
-			public const int nav_crossAppGroup = 2131427500;
-			
-			// aapt resource value: 0x7f0b00a8
-			public const int nav_favCompetitions = 2131427496;
-			
-			// aapt resource value: 0x7f0b00a9
-			public const int nav_favs = 2131427497;
+			// aapt resource value: 0x7f0b00b2
+			public const int nav_about = 2131427506;
 			
 			// aapt resource value: 0x7f0b00ad
-			public const int nav_logoutLogin = 2131427501;
+			public const int nav_categories = 2131427501;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int nav_personalizedGroup = 2131427494;
+			// aapt resource value: 0x7f0b00b0
+			public const int nav_crossAppGroup = 2131427504;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int nav_profile = 2131427495;
+			// aapt resource value: 0x7f0b00af
+			public const int nav_endingSoon = 2131427503;
 			
 			// aapt resource value: 0x7f0b00ab
-			public const int nav_trending = 2131427499;
+			public const int nav_favCompetitions = 2131427499;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int nav_view = 2131427479;
+			// aapt resource value: 0x7f0b00ac
+			public const int nav_favs = 2131427500;
+			
+			// aapt resource value: 0x7f0b00b1
+			public const int nav_logoutLogin = 2131427505;
+			
+			// aapt resource value: 0x7f0b00a9
+			public const int nav_personalizedGroup = 2131427497;
+			
+			// aapt resource value: 0x7f0b00aa
+			public const int nav_profile = 2131427498;
+			
+			// aapt resource value: 0x7f0b00ae
+			public const int nav_trending = 2131427502;
+			
+			// aapt resource value: 0x7f0b0099
+			public const int nav_view = 2131427481;
 			
 			// aapt resource value: 0x7f0b0078
 			public const int navigation_header_container = 2131427448;
 			
 			// aapt resource value: 0x7f0b0040
 			public const int never = 2131427392;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int noEndingSoonCompetitionsMessage = 2131427454;
+			
+			// aapt resource value: 0x7f0b00a8
+			public const int noTrendingCompetitionsMessage = 2131427496;
 			
 			// aapt resource value: 0x7f0b0013
 			public const int none = 2131427347;
@@ -2464,8 +2476,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0019
 			public const int parallax = 2131427353;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int parentLayout = 2131427454;
+			// aapt resource value: 0x7f0b0080
+			public const int parentLayout = 2131427456;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int parentPanel = 2131427406;
@@ -2482,17 +2494,17 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b005c
 			public const int radio = 2131427420;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int registerButton = 2131427469;
+			// aapt resource value: 0x7f0b008f
+			public const int registerButton = 2131427471;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int right = 2131427362;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int rightEntityButton = 2131427457;
-			
 			// aapt resource value: 0x7f0b0083
-			public const int rightEntityVotes = 2131427459;
+			public const int rightEntityButton = 2131427459;
+			
+			// aapt resource value: 0x7f0b0085
+			public const int rightEntityVotes = 2131427461;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int screen = 2131427383;
@@ -2557,14 +2569,14 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0033
 			public const int showTitle = 2131427379;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int sign_in_button = 2131427470;
-			
-			// aapt resource value: 0x7f0b008f
-			public const int sign_out_and_disconnect = 2131427471;
-			
 			// aapt resource value: 0x7f0b0090
-			public const int sign_out_button = 2131427472;
+			public const int sign_in_button = 2131427472;
+			
+			// aapt resource value: 0x7f0b0091
+			public const int sign_out_and_disconnect = 2131427473;
+			
+			// aapt resource value: 0x7f0b0092
+			public const int sign_out_button = 2131427474;
 			
 			// aapt resource value: 0x7f0b0077
 			public const int snackbar_action = 2131427447;
@@ -2596,11 +2608,11 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0023
 			public const int start = 2131427363;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int status = 2131427474;
+			// aapt resource value: 0x7f0b0094
+			public const int status = 2131427476;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int status_bar_latest_event_content = 2131427482;
+			// aapt resource value: 0x7f0b009c
+			public const int status_bar_latest_event_content = 2131427484;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int submit_area = 2131427437;
@@ -2608,20 +2620,20 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b002e
 			public const int tabMode = 2131427374;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int text = 2131427490;
+			// aapt resource value: 0x7f0b00a4
+			public const int text = 2131427492;
 			
-			// aapt resource value: 0x7f0b00a0
-			public const int text2 = 2131427488;
+			// aapt resource value: 0x7f0b00a2
+			public const int text2 = 2131427490;
 			
 			// aapt resource value: 0x7f0b0055
 			public const int textSpacerNoButtons = 2131427413;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int textView1 = 2131427465;
+			// aapt resource value: 0x7f0b008b
+			public const int textView1 = 2131427467;
 			
-			// aapt resource value: 0x7f0b009e
-			public const int time = 2131427486;
+			// aapt resource value: 0x7f0b00a0
+			public const int time = 2131427488;
 			
 			// aapt resource value: 0x7f0b004b
 			public const int title = 2131427403;
@@ -2629,11 +2641,11 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0050
 			public const int title_template = 2131427408;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int toolbar = 2131427477;
+			// aapt resource value: 0x7f0b0097
+			public const int toolbar = 2131427479;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int toolbar_layout = 2131427476;
+			// aapt resource value: 0x7f0b0096
+			public const int toolbar_layout = 2131427478;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int top = 2131427364;
@@ -2644,8 +2656,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0074
 			public const int touch_outside = 2131427444;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int trendingCompetitionsListView = 2131427493;
+			// aapt resource value: 0x7f0b00a7
+			public const int trendingCompetitionsListView = 2131427495;
 			
 			// aapt resource value: 0x7f0b000a
 			public const int up = 2131427338;
@@ -2656,8 +2668,8 @@ namespace Versus.Droid
 			// aapt resource value: 0x7f0b0000
 			public const int view_offset_helper = 2131427328;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int votingButton = 2131427463;
+			// aapt resource value: 0x7f0b0089
+			public const int votingButton = 2131427465;
 			
 			// aapt resource value: 0x7f0b000d
 			public const int wide = 2131427341;
@@ -2839,61 +2851,64 @@ namespace Versus.Droid
 			public const int drawer_header = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int fragment_categories = 2130968616;
+			public const int ending_soon_fragment = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int fragment_competitionDetails = 2130968617;
+			public const int fragment_categories = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int fragment_competitions = 2130968618;
+			public const int fragment_competitionDetails = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int login_fragment = 2130968619;
+			public const int fragment_competitions = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int Main = 2130968620;
+			public const int login_fragment = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int notification_media_action = 2130968621;
+			public const int Main = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int notification_media_cancel_action = 2130968622;
+			public const int notification_media_action = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int notification_template_big_media = 2130968623;
+			public const int notification_media_cancel_action = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_template_big_media_narrow = 2130968624;
+			public const int notification_template_big_media = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_template_lines = 2130968625;
+			public const int notification_template_big_media_narrow = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_template_media = 2130968626;
+			public const int notification_template_lines = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_template_part_chronometer = 2130968627;
+			public const int notification_template_media = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_part_time = 2130968628;
+			public const int notification_template_part_chronometer = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int select_dialog_item_material = 2130968629;
+			public const int notification_template_part_time = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int select_dialog_multichoice_material = 2130968630;
+			public const int select_dialog_item_material = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int select_dialog_singlechoice_material = 2130968631;
+			public const int select_dialog_multichoice_material = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int support_simple_spinner_dropdown_item = 2130968632;
+			public const int select_dialog_singlechoice_material = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int toolbar = 2130968633;
+			public const int support_simple_spinner_dropdown_item = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int trending_fragment = 2130968634;
+			public const int toolbar = 2130968634;
+			
+			// aapt resource value: 0x7f04003b
+			public const int trending_fragment = 2130968635;
 			
 			static Layout()
 			{
