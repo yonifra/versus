@@ -1,35 +1,14 @@
 ﻿<Properties StartupItem="Droid/Versus.Droid.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Droid/Fragments/LoginFragment.cs">
     <Files>
-      <File FileName="Droid/Adapters/CompetitionListAdapter.cs" Line="11" Column="5" />
-      <File FileName="Droid/Activities/MainActivity.cs" Line="15" Column="1" />
-      <File FileName="Droid/Activities/CompetitionsActivity.cs" Line="20" Column="53" />
-      <File FileName="Droid/app.config" Line="1" Column="1" />
-      <File FileName="Droid/Properties/AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="Droid/Adapters/CategoriesListAdapter.cs" Line="78" Column="2" />
-      <File FileName="Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" Line="81" Column="13" />
-      <File FileName="versus Status" />
+      <File FileName="Droid/Fragments/LoginFragment.cs" Line="43" Column="13" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="Versus" expanded="True">
-            <Node name="Versus.Droid" selected="True" />
-            <Node name="Versus.Portable" expanded="True">
-              <Node name="Data" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/yonifra/versus/Versus.Portable/Versus.Portable/Data/FirebaseManager.cs" line="105" column="86" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" />
+  <MonoDevelop.Ide.ItemProperties.Versus.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Nexus 4 (Marshmallow)" AndroidDesignerPreferredTheme="Theme.DeviceDefault" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.Versus.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.F8E30F8B-5C8C-4128-87C6-71D480D5F7A3" />
 </Properties>

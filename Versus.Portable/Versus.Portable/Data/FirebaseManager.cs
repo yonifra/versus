@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -18,11 +19,18 @@ namespace Versus.Portable.Data
         private const string CategoriesName = "categories";
         private const string CompetitionsName = "competitions";
         private const string EntitiesName = "entities";
+        private Dictionary<string, VsCompetition> _competitions;
+        private Dictionary<string, VsCompetition> _trendingCompetitions;
+        private Dictionary<string, VsCompetition> _endingSoonCompetitions;
+        private Dictionary<string, Category> _categories;
+        private Dictionary<string, VsEntity> _entities;
 
-        public static FirebaseManager Instance
-        {
-            get { return _instance ?? (_instance = new FirebaseManager()); }
-        }
+        // Competitions with more than the threshold vote counts will be considered "trending"
+        const int THRESHOLD = 40;
+        private readonly TimeSpan ENDING_SOON_THRESHOLD = TimeSpan.FromDays (3);
+
+
+        public static FirebaseManager Instance => _instance ?? (_instance = new FirebaseManager());
 
         private FirebaseManager()
         {
@@ -35,7 +43,7 @@ namespace Versus.Portable.Data
             _client = new FirebaseClient(config);
         }
 
-        public FirebaseClient Client { get { return _client; } }
+        public FirebaseClient Client => _client;
 
         /// <summary>
         /// Deletes ALL the data from the server. USE WITH CAUTION!
@@ -56,28 +64,51 @@ namespace Versus.Portable.Data
 
         public async void UpdateVote(string entity, string competition)
         {
-            var entities = await GetAllEntities();
-            var competitions = await GetAllCompetitions ();
+            var isUserAuthenticated = await IsUserAuthenticatedAsync();
 
-            foreach (var e in entities)
+            if (isUserAuthenticated)
             {
-                if (e.Value.Name == entity)
+                var entities = await GetAllEntities();
+                var competitions = await GetAllCompetitions();
+
+                if (entities.Any(e => e.Value.Name == entity))
                 {
                     // Entity is valid
-                    foreach (var c in competitions.Where(c => c.Value.Name == competition)) {
-                        
-                        if (c.Value.CompetitorName1 == entity){
-                            // TODO: Here you should validate if this user has logged in and if he's already
-                            // casted his vote
+                    foreach (var c in competitions.Where(c => c.Value.Name == competition))
+                    {
+                        if (c.Value.CompetitorName1 == entity)
+                        {
                             c.Value.CompetitorScore1++;
-                            UpdateCompetition (c.Value, c.Key);
-                        } else if (c.Value.CompetitorName2 == entity) {
+                            UpdateCompetition(c.Value, c.Key);
+                        }
+                        else if (c.Value.CompetitorName2 == entity)
+                        {
                             c.Value.CompetitorScore2++;
-                            UpdateCompetition (c.Value, c.Key);
+                            UpdateCompetition(c.Value, c.Key);
                         }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets all the ending soon competitions
+        /// </summary>
+        /// <returns>The ending soon competitions.</returns>
+        /// <param name="shouldRefresh">If set to <c>true</c> should refresh.</param>
+        public async Task<Dictionary<string, VsCompetition>> GetEndingSoonCompetitions (bool shouldRefresh = false)
+        {
+            if (_endingSoonCompetitions == null || (_competitions == null || shouldRefresh))
+            {
+                await GetAllCompetitions (shouldRefresh);
+                _endingSoonCompetitions = new Dictionary<string, VsCompetition> ();
+            }
+
+            _endingSoonCompetitions = _competitions
+                .Where (cm => DateTime.Now - cm.Value.EndingDate <= ENDING_SOON_THRESHOLD)
+                .ToDictionary (o => o.Key, o => o.Value);
+
+            return _endingSoonCompetitions;
         }
 
         /// <summary>
@@ -86,36 +117,51 @@ namespace Versus.Portable.Data
         /// <returns>The vote.</returns>
         /// <param name="position">Position.</param>
         /// <param name="competition">Competition.</param>
-        public async void UpdateVote (int position, string competition)
+        public async void UpdateVote(int position, string competition)
         {
-            var competitions = await GetAllCompetitions ();
+            var isUserAuthenticated = await IsUserAuthenticatedAsync();
 
-            // Entity is valid
-            foreach (var c in competitions.Where (c => c.Value.Name == competition)) {
+            if (isUserAuthenticated)
+            {
+                var competitions = await GetAllCompetitions();
 
-            if (position==1) {
-                    // TODO: Here you should validate if this user has logged in and if he's already
-                    // casted his vote
-                    c.Value.CompetitorScore1++;
-                    UpdateCompetition (c.Value, c.Key);
-            } else if (position==2) {
-                    c.Value.CompetitorScore2++;
-                    UpdateCompetition (c.Value, c.Key);
+                // Entity is valid
+                foreach (var c in competitions.Where(c => c.Value.Name == competition))
+                {
+                    switch (position)
+                    {
+                        case 1:
+                            c.Value.CompetitorScore1++;
+                            UpdateCompetition(c.Value, c.Key);
+                            break;
+                        case 2:
+                            c.Value.CompetitorScore2++;
+                            UpdateCompetition(c.Value, c.Key);
+                            break;
+                    }
                 }
             }
         }
 
-        private async void UpdateCompetition (VsCompetition value, string key)
+        public async Task<bool> IsUserAuthenticatedAsync()
         {
-            if (string.IsNullOrEmpty (value.CompetitorName1)) {
+            return true;
+            // throw new NotImplementedException();
+        }
+
+        private static async void UpdateCompetition(VsCompetition value, string key)
+        {
+            if (string.IsNullOrEmpty(value.CompetitorName1))
+            {
                 value.CompetitorName1 = " ";
             }
 
-            if (string.IsNullOrEmpty (value.CompetitorName2)) {
+            if (string.IsNullOrEmpty(value.CompetitorName2))
+            {
                 value.CompetitorName2 = " ";
             }
 
-            await _client.UpdateAsync (CompetitionsName + "/" + key, value);
+            await _client.UpdateAsync($"{CompetitionsName}/{key}", value);
         }
 
         public async Task<bool> AddCompetition(VsCompetition competition)
@@ -139,50 +185,99 @@ namespace Versus.Portable.Data
             return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public async Task<Dictionary<string, VsCompetition>> GetAllCompetitions()
+        /// <summary>
+        /// Returns a Dictionary of all of the competitions keys and values. (With caching)
+        /// </summary>
+        /// <param name="shouldRefresh">Indicates if we want to force an update of the competitions list</param>
+        /// <returns>Dictionary of competitions and their keys</returns>
+        public async Task<Dictionary<string, VsCompetition>> GetAllCompetitions(bool shouldRefresh = false)
         {
-            var response = await _client.GetAsync(CompetitionsName);
+            // if we want to force the update, or the competitions dictionary have not yet been initialized, update it!
+            if (shouldRefresh || _competitions == null)
+            {
+                var response = await _client.GetAsync(CompetitionsName);
 
-            return JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
+                _competitions = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>>(response.Body);
+            }
+
+            return _competitions;
         }
 
-        public async Task<IEnumerable<VsCompetition>> GetCompetitions (string categoryName)
+        /// <summary>
+        /// Gets all the currently trending competitions
+        /// </summary>
+        /// <returns>The all competitions.</returns>
+        /// <param name="shouldRefresh">If set to <c>true</c> should refresh.</param>
+        public async Task<Dictionary<string, VsCompetition>> GetTrendingCompetitions (int maxCompetitions = 20, bool shouldRefresh = false)
         {
-            var response = await _client.GetAsync (CompetitionsName);
+            if (_trendingCompetitions == null || (_competitions == null || shouldRefresh))
+            {
+                await GetAllCompetitions (shouldRefresh);
+                _trendingCompetitions = new Dictionary<string, VsCompetition> ();
+            }
 
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
+            _trendingCompetitions = _competitions
+                .Where (cm => cm.Value.CompetitorScore1 + cm.Value.CompetitorScore2 > THRESHOLD)
+                .ToDictionary (o => o.Key, o => o.Value);
 
-            return dict.Values.Where (c => c.Category.ToLower() == categoryName.ToLower());
+            return _trendingCompetitions;
         }
 
-        public async Task<VsCompetition> GetCompetition (string competitionName)
+        /// <summary>
+        /// Gets a list of competitions by their category name
+        /// </summary>
+        /// <param name="categoryName">Name of the category we wish to get all competitions for</param>
+        /// <param name="refreshBefore">Indicates whether to refresh the cache before fetching the competition</param>
+        /// <returns>An enumerable of all competitions related to that category</returns>
+        public async Task<IEnumerable<VsCompetition>> GetCompetitions(string categoryName, bool refreshBefore = false)
         {
-            var response = await _client.GetAsync (CompetitionsName);
+            var dict = await GetAllCompetitions(refreshBefore);
 
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, VsCompetition>> (response.Body);
-
-            return dict.Values.FirstOrDefault (c => c.Name.ToLower () == competitionName.ToLower ());
+            return dict.Values.Where(c => string.Equals(c.Category, categoryName, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        public async Task<Dictionary<string, VsEntity>> GetAllEntities()
+        /// <summary>
+        /// Gets a specific competitions by name
+        /// </summary>
+        /// <param name="competitionName">The name of the competition to look for</param>
+        /// <param name="refreshBefore">Indicates whether we want to refresh the cache before searching</param>
+        /// <returns>The VsCompetition entity we found</returns>
+        public async Task<VsCompetition> GetCompetition(string competitionName, bool refreshBefore = false)
         {
-            var response = await _client.GetAsync(EntitiesName);
+            var dict = await GetAllCompetitions(refreshBefore);
 
-            return JsonConvert.DeserializeObject<Dictionary<string, VsEntity>>(response.Body);
+            return dict.Values.FirstOrDefault(c => string.Equals(c.Name, competitionName, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        public async Task<Dictionary<string, Category>> GetAllCategories()
+        public async Task<Dictionary<string, VsEntity>> GetAllEntities(bool shouldRefresh = false)
         {
-            var response = await _client.GetAsync(CategoriesName);
+            if (shouldRefresh || _entities == null)
+            {
+                var response = await _client.GetAsync(EntitiesName);
 
-            return JsonConvert.DeserializeObject<Dictionary<string, Category>>(response.Body);
+                _entities = JsonConvert.DeserializeObject<Dictionary<string, VsEntity>>(response.Body);
+            }
+
+            return _entities;
         }
 
-        public async Task<VsEntity> GetEntityByName (string name)
+        public async Task<Dictionary<string, Category>> GetAllCategories(bool shouldRefresh = false)
         {
-            var dic = await GetAllEntities ();
+            if (shouldRefresh || _categories == null)
+            {
+                var response = await _client.GetAsync(CategoriesName);
 
-            return dic.Values.First (e => e.Name.ToLower () == name.ToLower ());
+                _categories = JsonConvert.DeserializeObject<Dictionary<string, Category>>(response.Body);
+            }
+
+            return _categories;
+        }
+
+        public async Task<VsEntity> GetEntityByName(string name)
+        {
+            var dic = await GetAllEntities();
+
+            return dic.Values.First(e => string.Equals(e.Name, name, StringComparison.CurrentCultureIgnoreCase));
         }
     }
 }

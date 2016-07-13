@@ -4,7 +4,6 @@ using System.Linq;
 using Android.App;
 using Android.OS;
 using Android.Support.Design.Widget;
-using Android.Support.V7.App;
 using Android.Support.V7.Widget;
 using Android.Widget;
 using Square.Picasso;
@@ -13,77 +12,21 @@ using Versus.Portable.Data;
 using Versus.Portable.Entities;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
-namespace Versus.Droid
+namespace Versus.Droid.Activities
 {
-    [Activity (Label = "Competition Page")]
-    public class CompetitionPageActivity : ActionBarActivity
+    [Activity(Label = "Competition Page")]
+    public class CompetitionPageActivity : BaseActivity
     {
         private VsEntity _selectedEntity;
 
-        protected override async void OnCreate (Bundle savedInstanceState)
+        protected override int LayoutResource => Resource.Layout.fragment_competitionDetails;
+
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate (savedInstanceState);
+            base.OnCreate(savedInstanceState);
 
-            SetContentView (Resource.Layout.CompetitionPage);
-
-            var toolbar = FindViewById<Toolbar> (Resource.Id.toolbar);
-            var competitionName = Intent.GetStringExtra ("competitionName") ?? "";
-
-          //  ActionBar.Title = competitionName;
-            SetSupportActionBar (toolbar);
-            SupportActionBar.Title = competitionName;
-                            
-            var competition = await FirebaseManager.Instance.GetCompetition (competitionName);
-            var parentView = (FrameLayout)FindViewById (Resource.Id.parentLayout);
-
-            if (competition != null) {
-                var e1ImageButton = (ImageButton)FindViewById (Resource.Id.leftEntityButton);
-                var e2ImageButton = (ImageButton)FindViewById (Resource.Id.rightEntityButton);
-                var entityName = (AppCompatTextView)FindViewById (Resource.Id.entityName);
-                var votingButton = (AppCompatButton)FindViewById (Resource.Id.votingButton);
-                var entityDescription = (AppCompatTextView)FindViewById (Resource.Id.entityDescription);
-                FontsHelper.ApplyTypeface (Assets, new List<TextView> { entityName, entityDescription });
-
-                var entities = await FirebaseManager.Instance.GetAllEntities ();
-
-                var entity1 = entities.Values.FirstOrDefault (entity => string.Equals (entity.Name, competition.CompetitorName1, StringComparison.CurrentCultureIgnoreCase));
-                var entity2 = entities.Values.FirstOrDefault (entity => string.Equals (entity.Name, competition.CompetitorName2, StringComparison.CurrentCultureIgnoreCase));
-
-                if (entity1 != null && entity2 != null) {
-                    _selectedEntity = entity1;
-
-                    // Load the image asynchonously
-                    Picasso.With (this).Load (entity1.ImageUrl).Into (e1ImageButton);
-                    Picasso.With (this).Load (entity2.ImageUrl).Into (e2ImageButton);
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
-
-                    votingButton.Click += (sender, args) => {
-                        var index = _selectedEntity == entity1 ? 1 : 2;
-                        FirebaseManager.Instance.UpdateVote (index, competitionName);
-
-                        Snackbar.Make (parentView, "Casted a vote for " + _selectedEntity.Name, Snackbar.LengthLong).Show ();
-                                
-                        //Toast.MakeText (this, "Casted a vote for " + _selectedEntity.Name, ToastLength.Short).Show ();
-                    };
-                }
-
-                e1ImageButton.Click += (sender, args) => {
-                    _selectedEntity = entity1;
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
-                };
-
-                e2ImageButton.Click += (sender, args) => {
-                    _selectedEntity = entity2;
-                    UpdateUiForSelectedEntity (entityName, entityDescription, votingButton);
-                };
-            }
         }
 
-        private void UpdateUiForSelectedEntity (AppCompatTextView entityName, AppCompatTextView entityDescription, AppCompatButton votingButton)
-        {
-            entityName.Text = _selectedEntity.Name;
-            entityDescription.Text = _selectedEntity.Description;
-            votingButton.Text = "VOTE FOR " + _selectedEntity.Name;
-        }
+
     }
 }
