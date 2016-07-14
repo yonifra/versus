@@ -13,7 +13,7 @@
     <!-- Button labels -->
     <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
-	<string name="app_store_url">https://play.google.com/store/apps/details?id=com.cryptocodes.pixie</string>
+	<string name="app_store_url">https://play.google.com/store/apps/details?id=com.cryptocodes.versus</string>
 	<string name="share_global_message_subject">Versus App</string>
 	<string name="share_global_message_text">Challenge your friends using #Versus!</string>
 
