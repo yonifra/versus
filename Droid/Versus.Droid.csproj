@@ -100,6 +100,15 @@
     <Reference Include="Xamarin.GooglePlayServices.Plus">
       <HintPath>..\packages\Xamarin.GooglePlayServices.Plus.29.0.0.2\lib\MonoAndroid41\Xamarin.GooglePlayServices.Plus.dll</HintPath>
     </Reference>
+    <Reference Include="Connectivity.Plugin">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.3\lib\MonoAndroid10\Connectivity.Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Connectivity.Plugin.Abstractions">
+      <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.3\lib\MonoAndroid10\Connectivity.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.FloatingActionButton">
+      <HintPath>..\packages\Refractored.FloatingActionButton.1.3.0\lib\MonoAndroid10\Refractored.FloatingActionButton.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -124,17 +133,13 @@
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
+    <None Include="PluginsHelp\ConnectivityReadme.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\CompetitionListItemLayout.axml" />
     <AndroidResource Include="Resources\layout\fragment_competitions.axml" />
     <AndroidResource Include="Resources\layout\fragment_competitionDetails.axml" />
@@ -159,6 +164,36 @@
     <AndroidResource Include="Resources\drawable\cryptocodes.png" />
     <AndroidResource Include="Resources\layout\trending_fragment.axml" />
     <AndroidResource Include="Resources\layout\ending_soon_fragment.axml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_view_list_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_view_list_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_view_list_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_view_list_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_trending_up_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_trending_up_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_trending_up_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_trending_up_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_star_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_star_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_star_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_star_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_person_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_person_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_person_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_person_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_alarm_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_alarm_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_alarm_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_alarm_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_alarm_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_view_list_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_trending_up_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_person_black_48dp.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_star_black_48dp.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -176,6 +211,10 @@
       <Version>23.1.1.1</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="ConnectivityPlugin">
+      <Version>1.0.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="fab">
       <Version>1.3.0</Version>
       <Visible>False</Visible>
@@ -191,6 +230,7 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Fragments\" />
     <Folder Include="Resources\style\" />
+    <Folder Include="Resources\mipmap-xhdpi\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Fonts\Slabo.ttf" />

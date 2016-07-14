@@ -7,6 +7,7 @@ using Android.Support.Design.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Connectivity.Plugin;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
@@ -38,47 +39,51 @@ namespace Versus.Droid.Fragments
 
         private async void LoadDataToGridAsync ()
         {
-            await GetEndingCompetitionsAsync ();
-
-            if (_endingSoonCompetitions != null && _endingSoonCompetitions.Any ())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                // Hide the text view
-                var textView = _view.FindViewById<TextView> (Resource.Id.noEndingSoonCompetitionsMessage);
-                textView.Visibility = ViewStates.Invisible;
+                await GetEndingCompetitionsAsync ();
+
+                if (_endingSoonCompetitions != null && _endingSoonCompetitions.Any ())
+                {
+                    // Hide the text view
+                    var textView = _view.FindViewById<TextView> (Resource.Id.noEndingSoonCompetitionsMessage);
+                    textView.Visibility = ViewStates.Invisible;
+                }
+                else
+                {
+                    return;
+                }
+
+                var competitionsListView = _view.FindViewById<ListView> (Resource.Id.endingSoonCompetitionsListView);
+                competitionsListView.Visibility = ViewStates.Visible;
+                competitionsListView.Adapter = new CompetitionListAdapter (Activity, _endingSoonCompetitions);
+
+                competitionsListView.ItemClick += (sender, e) =>
+                {
+                    var index = e.Position;
+
+                    var lv = (sender as ListView);
+
+                    if (lv != null)
+                    {
+                        var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
+                        var competition = competitionListAdapter?.Competitions [index];
+
+                        if (competition != null)
+                        {
+                            // Put the name of the selected category into the intent
+                            var fragment = new CompetitionPageFragment { Competition = competition };
+
+                            Activity.SupportFragmentManager.BeginTransaction ()
+                                .Replace (Resource.Id.content_frame, fragment)
+                                .AddToBackStack (fragment.Tag)
+                            .Commit ();
+                        }
+                    }
+                };
             }
             else
-            {
-                Snackbar.Make (_view, "No ending soon competitions", Snackbar.LengthShort).Show ();
-                return;
-            }
-
-            var competitionsListView = _view.FindViewById<ListView> (Resource.Id.endingSoonCompetitionsListView);
-            competitionsListView.Visibility = ViewStates.Visible;
-            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _endingSoonCompetitions);
-
-            competitionsListView.ItemClick += (sender, e) =>
-            {
-                var index = e.Position;
-
-                var lv = (sender as ListView);
-
-                if (lv != null)
-                {
-                    var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
-                    var competition = competitionListAdapter?.Competitions [index];
-
-                    if (competition != null)
-                    {
-                        // Put the name of the selected category into the intent
-                        var fragment = new CompetitionPageFragment { Competition = competition };
-
-                        Activity.SupportFragmentManager.BeginTransaction ()
-                            .Replace (Resource.Id.content_frame, fragment)
-                            .AddToBackStack (fragment.Tag)
-                            .Commit ();
-                    }
-                }
-            };
+                Snackbar.Make (_view, Resource.String.no_internet_message, Snackbar.LengthLong).Show();
         }
 
         private async Task GetEndingCompetitionsAsync ()

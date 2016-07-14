@@ -5,6 +5,7 @@ using Android.Support.Design.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Connectivity.Plugin;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
@@ -29,60 +30,66 @@ namespace Versus.Droid.Fragments
 
             _view = inflater.Inflate (Resource.Layout.fragment_competitions, null);
 
-            LoadDataToGridAsync (_view);
+            LoadDataToGridAsync ();
 
             return _view;
         }
 
-        private async void LoadDataToGridAsync (View view)
+        private async void LoadDataToGridAsync ()
         {
-            await GetAllCategoriesAsync (SelectedCategory);
-
-            var competitionsListView = view.FindViewById<ListView> (Resource.Id.competitionsListView);
-            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _competitions);
-
-            competitionsListView.ItemClick += (sender, e) =>
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var index = e.Position;
+                await GetAllCategoriesAsync (SelectedCategory);
 
-                var lv = (sender as ListView);
+                var competitionsListView = _view.FindViewById<ListView> (Resource.Id.competitionsListView);
+                competitionsListView.Adapter = new CompetitionListAdapter (Activity, _competitions);
 
-                if (lv != null)
+                competitionsListView.ItemClick += (sender, e) =>
                 {
-                    var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
-                    var competition = competitionListAdapter?.Competitions [index];
+                    var index = e.Position;
 
-                    if (competition != null)
+                    var lv = (sender as ListView);
+
+                    if (lv != null)
                     {
-                        // Put the name of the selected category into the intent
-                        var fragment = new CompetitionPageFragment { Competition = competition };
+                        var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
+                        var competition = competitionListAdapter?.Competitions [index];
 
-                        Activity.SupportFragmentManager.BeginTransaction ()
-                            .Replace (Resource.Id.content_frame, fragment)
-                            .AddToBackStack (fragment.Tag)
-                            .Commit ();
+                        if (competition != null)
+                        {
+                            // Put the name of the selected category into the intent
+                            var fragment = new CompetitionPageFragment { Competition = competition };
+
+                            Activity.SupportFragmentManager.BeginTransaction ()
+                                .Replace (Resource.Id.content_frame, fragment)
+                                .AddToBackStack (fragment.Tag)
+                                .Commit ();
+                        }
                     }
-                }
-                else
-                {
-                    Snackbar.Make (_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
-                }
-            };
+                };
+            }
+            else
+                Snackbar.Make (_view, Resource.String.no_internet_message, Snackbar.LengthLong).Show();
         }
 
         private async Task GetAllCategoriesAsync (string categoryName)
         {
-            if (string.IsNullOrEmpty (categoryName))
+            if (CrossConnectivity.Current.IsConnected)
             {
-                Log.Debug (LOG_TAG, "Could not resolve category name");
-                var all = await FirebaseManager.Instance.GetAllCompetitions ();
-                _competitions = all.Values;
+                if (string.IsNullOrEmpty (categoryName))
+                {
+                    Log.Debug (LOG_TAG, "Could not resolve category name");
+                    var all = await FirebaseManager.Instance.GetAllCompetitions ();
+                    _competitions = all.Values;
+                }
+                else
+                {
+                    Log.Debug (LOG_TAG, "Found category " + categoryName);
+                    _competitions = await FirebaseManager.Instance.GetCompetitions (categoryName);
+                }
             }
             else
-            {
-                Log.Debug (LOG_TAG, "Found category " + categoryName);
-                _competitions = await FirebaseManager.Instance.GetCompetitions (categoryName);
-            }
+                Snackbar.Make (_view, Resource.String.no_internet_message, Snackbar.LengthLong).Show ();
         }
 
         public string SelectedCategory { get; set; }

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using Connectivity.Plugin;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
@@ -12,6 +14,7 @@ namespace Versus.Droid.Fragments
     public class CategoriesFragment : Android.Support.V4.App.Fragment
     {
         private Dictionary<string, Category> _categories;
+        private View _view;
 
         public CategoriesFragment ()
         {
@@ -24,54 +27,57 @@ namespace Versus.Droid.Fragments
             base.OnCreateView (inflater, container, savedInstanceState);
 
             //var view = inflater.Inflate(Resource.Layout.fragment_categories, container, false);
-            var view = inflater.Inflate (Resource.Layout.fragment_categories, null);
+            _view = inflater.Inflate (Resource.Layout.fragment_categories, null);
 
-            LoadDataToGrid (view);
+            LoadDataToGrid ();
 
-            return view;
+            return _view;
         }
 
-        private async void LoadDataToGrid (View view)
+        private async void LoadDataToGrid ()
         {
-            //if (!ConnectivityHelper.HasConnectivity (Activity)) return;
-            var categoriesListView = view.FindViewById<ListView> (Resource.Id.categoriesListView);
-
-            _categories = await FirebaseManager.Instance.GetAllCategories ();
-
-            if (_categories != null)
+            if (CrossConnectivity.Current.IsConnected)
             {
-                categoriesListView.Adapter = new CategoriesListAdapter (Activity, _categories.Values);
-            }
+                var categoriesListView = _view.FindViewById<ListView> (Resource.Id.categoriesListView);
 
-            categoriesListView.ItemClick += (sender, e) =>
-            {
-                var index = e.Position;
+                _categories = await FirebaseManager.Instance.GetAllCategories ();
 
-                var lv = (sender as ListView);
-
-                if (lv != null)
+                if (_categories != null && _categories.Any())
                 {
-                    var categoriesListAdapter = lv.Adapter as CategoriesListAdapter;
+                    categoriesListView.Adapter = new CategoriesListAdapter (Activity, _categories.Values);
 
-                    if (categoriesListAdapter != null)
+                    var msgText = _view.FindViewById<TextView> (Resource.Id.noCategoriesMessage);
+                    msgText.Visibility = ViewStates.Invisible;
+                    categoriesListView.Visibility = ViewStates.Visible;
+                }
+
+                categoriesListView.ItemClick += (sender, e) =>
+                {
+                    var index = e.Position;
+
+                    var lv = (sender as ListView);
+
+                    if (lv != null)
                     {
-                        var category = categoriesListAdapter.Categories [index];
-                        var fragment = new CompetitionsFragment { SelectedCategory = category.Name };
+                        var categoriesListAdapter = lv.Adapter as CategoriesListAdapter;
 
-                        Activity.SupportFragmentManager.BeginTransaction ()
-                                .Replace (Resource.Id.content_frame, fragment)
-                                .AddToBackStack (fragment.Tag)
-                                .Commit ();
+                        if (categoriesListAdapter != null)
+                        {
+                            var category = categoriesListAdapter.Categories [index];
+                            var fragment = new CompetitionsFragment { SelectedCategory = category.Name };
+
+                            Activity.SupportFragmentManager.BeginTransaction ()
+                                    .Replace (Resource.Id.content_frame, fragment)
+                                    .AddToBackStack (fragment.Tag)
+                                    .Commit ();
+                        }
                     }
-                }
-                else
-                {
-
-#if DEBUG
-                    Snackbar.Make (view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
-#endif
-                }
-            };
+                };
+            }
+            else
+            {
+                Snackbar.Make (_view, Resource.String.no_internet_message, Snackbar.LengthLong).Show ();
+            }
         }
 
 

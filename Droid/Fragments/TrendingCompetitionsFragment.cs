@@ -7,6 +7,7 @@ using Android.Support.Design.Widget;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Connectivity.Plugin;
 using Versus.Droid.Adapters;
 using Versus.Portable.Data;
 using Versus.Portable.Entities;
@@ -38,50 +39,55 @@ namespace Versus.Droid.Fragments
 
         private async void LoadDataToGridAsync (View view)
         {
-            await GetTrendingCompetitionsAsync ();
-
-            if (_trendingCompetitions != null && _trendingCompetitions.Any ())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                var textView = view.FindViewById<TextView> (Resource.Id.noTrendingCompetitionsMessage);
-                textView.Visibility = ViewStates.Invisible;
-            }
-            else 
-            {
-                Snackbar.Make (_view, "No trending competitions found", Snackbar.LengthShort).Show ();
-                return;
-            }
+                await GetTrendingCompetitionsAsync ();
 
-            var competitionsListView = view.FindViewById<ListView> (Resource.Id.trendingCompetitionsListView);
-            competitionsListView.Visibility = ViewStates.Visible;
-            competitionsListView.Adapter = new CompetitionListAdapter (Activity, _trendingCompetitions);
-
-            competitionsListView.ItemClick += (sender, e) =>
-            {
-                var index = e.Position;
-
-                var lv = (sender as ListView);
-
-                if (lv != null)
+                if (_trendingCompetitions != null && _trendingCompetitions.Any ())
                 {
-                    var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
-                    var competition = competitionListAdapter?.Competitions [index];
-
-                    if (competition != null)
-                    {
-                        // Put the name of the selected category into the intent
-                        var fragment = new CompetitionPageFragment { Competition = competition };
-
-                        Activity.SupportFragmentManager.BeginTransaction ()
-                            .Replace (Resource.Id.content_frame, fragment)
-                            .AddToBackStack (fragment.Tag)
-                            .Commit ();
-                    }
+                    var textView = view.FindViewById<TextView> (Resource.Id.noTrendingCompetitionsMessage);
+                    textView.Visibility = ViewStates.Invisible;
                 }
                 else
                 {
-                    Snackbar.Make (_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
+                    Snackbar.Make (_view, "No trending competitions found", Snackbar.LengthShort).Show ();
+                    return;
                 }
-            };
+
+                var competitionsListView = view.FindViewById<ListView> (Resource.Id.trendingCompetitionsListView);
+                competitionsListView.Visibility = ViewStates.Visible;
+                competitionsListView.Adapter = new CompetitionListAdapter (Activity, _trendingCompetitions);
+
+                competitionsListView.ItemClick += (sender, e) =>
+                {
+                    var index = e.Position;
+
+                    var lv = (sender as ListView);
+
+                    if (lv != null)
+                    {
+                        var competitionListAdapter = lv.Adapter as CompetitionListAdapter;
+                        var competition = competitionListAdapter?.Competitions [index];
+
+                        if (competition != null)
+                        {
+                            // Put the name of the selected category into the intent
+                            var fragment = new CompetitionPageFragment { Competition = competition };
+
+                            Activity.SupportFragmentManager.BeginTransaction ()
+                                .Replace (Resource.Id.content_frame, fragment)
+                                .AddToBackStack (fragment.Tag)
+                                .Commit ();
+                        }
+                    }
+                    else
+                    {
+                        Snackbar.Make (_view, "Item " + e.Position + " clicked", Snackbar.LengthShort).Show ();
+                    }
+                };
+            }
+            else
+                Snackbar.Make (_view, Resource.String.no_internet_message, Snackbar.LengthLong).Show();
         }
 
         private async Task GetTrendingCompetitionsAsync ()
